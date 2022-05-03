@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/03 16:52:42 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/03 17:11:10 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include "../libft/libft.h"
+
+int	ft_printf(const char *format, ...);
 
 #endif
