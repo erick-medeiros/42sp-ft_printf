@@ -6,7 +6,8 @@ LIB			= ar -rcs
 LIBFT_DIR	= ./libft/
 LIBFT		= $(LIBFT_DIR)libft.a
 INC_DIR 	= ./include/
-INCS		= -I $(INC_DIR)
+INC_FLAG	= -I $(INC_DIR) -I $(LIBFT_DIR)
+INC			= $(INC_DIR)libftprintf.h
 SRC_DIR 	= ./src/
 SRC 		= $(SRC_DIR)ft_printf.c
 OBJ_DIR		= ./obj/
@@ -14,16 +15,17 @@ OBJ			= $(SRC:.c=.o)
 COLOR_WHITE	= \e[00m
 COLOR_GREEN	= \e[32m
 COLOR_RED	= \e[91m
+COLOR_BLUE	= \e[34m
 
 all: $(NAME)
 
 %.o: %.c
 	@echo "$(COLOR_GREEN)Compiling $(COLOR_WHITE)$(<:.c=)"
-	@$(CC) $(INCS) -c $< -o $@
+	@$(CC) $(INC_FLAG) -c $< -o $@
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ) $(INC) $(LIBFT)
 	@echo "$(COLOR_GREEN)Compiling $(COLOR_WHITE)$(NAME)"
-	@$(LIB) $(NAME) $(OBJ)
+	@$(LIB) $(NAME) $(INC) $(OBJ)
 
 $(LIBFT):
 	@echo "$(COLOR_GREEN)Compiling $(COLOR_WHITE)libft"
