@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   c_test.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/06 17:11:02 by eandre-f         ###   ########.fr       */
+/*   Created: 2022/05/06 17:08:11 by eandre-f          #+#    #+#             */
+/*   Updated: 2022/05/06 17:09:50 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
 #include "tests.h"
 #include "utils.h"
 
-// stdout_cp = copy of default "stdout"
-
-int	main(void)
+void	c_test(int stdout_cp)
 {
-	int	stdout_cp;
+	int	fd;
 
-	stdout_cp = dup(1);
-	c_test(stdout_cp);
-	close(stdout_cp);
-	return (0);
+	printf("terminal 1\n");
+	fd = open_printf_log();
+	if (fd == -1)
+		return ;
+	printf("arquivo\n");
+	stdout_default(stdout_cp, fd);
+	printf("terminal 2\n");
 }

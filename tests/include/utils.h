@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/06 17:11:02 by eandre-f         ###   ########.fr       */
+/*   Created: 2022/05/06 17:08:25 by eandre-f          #+#    #+#             */
+/*   Updated: 2022/05/06 17:09:06 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-#include "tests.h"
-#include "utils.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-// stdout_cp = copy of default "stdout"
+# include <fcntl.h>
+# include <stdio.h>
+# include <unistd.h>
 
-int	main(void)
-{
-	int	stdout_cp;
+void	stdout_default(int stdout_cp, int fd);
+int		open_printf_log(void);
+int		open_ft_printf_log(void);
+void	msg_error(char *str);
 
-	stdout_cp = dup(1);
-	c_test(stdout_cp);
-	close(stdout_cp);
-	return (0);
-}
+#endif
