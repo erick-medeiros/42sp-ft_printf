@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_test.c                                           :+:      :+:    :+:   */
+/*   pure_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 17:08:11 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/08 01:53:36 by eandre-f         ###   ########.fr       */
+/*   Created: 2022/05/08 01:02:03 by eandre-f          #+#    #+#             */
+/*   Updated: 2022/05/08 01:52:26 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	c_test(int (*fn_printf)(const char *format, ...))
+void	pure_test(int (*fn_printf)(const char *format, ...))
 {
-	fn_printf("character %c\n", 'a');
+	fn_printf("pure\n");
 }

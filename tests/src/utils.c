@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:08:14 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/06 17:10:38 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/08 01:32:41 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,53 @@ void	stdout_default(int stdout_cp, int fd)
 	dup2(stdout_cp, 1);
 }
 
-int	open_printf_log(void)
+int	open_stdout(char *path_open)
 {
 	int	fd;
 
-	fd = open("log/printf.log", O_RDWR | O_CREAT, 0777);
+	fd = open(path_open, O_RDWR | O_CREAT, 0777);
 	if (fd == -1)
-		msg_error("open failed output_printf");
+		printf("open failed: %s\n", path_open);
 	else
 		dup2(fd, 1);
 	return (fd);
 }
 
-int	open_ft_printf_log(void)
+void	compare_lines_two_files(char *path_open1, char *path_open2)
 {
-	int	fd;
+	size_t		i;
+	int			fd1;
+	int			fd2;
+	char		*s1;
+	char		*s2;
 
-	fd = open("log/ft_printf.log", O_RDWR | O_CREAT, 0777);
-	if (fd == -1)
-		msg_error("open failed output_printf");
-	else
-		dup2(fd, 1);
-	return (fd);
-}
-
-void	msg_error(char *str)
-{
-	printf("%s\n", str);
+	fd1 = open(path_open1, O_RDONLY);
+	fd2 = open(path_open2, O_RDONLY);
+	i = 1;
+	s1 = get_next_line(fd1);
+	s2 = get_next_line(fd2);
+	while (s1 != NULL || s2 != NULL)
+	{
+		if (strcmp(s1, s2) != 0)
+		{
+			printf("\e[91mError line %zu\e[00m\n", i);
+			printf("s1 = %s", s1);
+			printf("s2 = %s", s2);
+			break ;
+		}
+		else
+		{
+			free(s1);
+			free(s2);
+			s1 = get_next_line(fd1);
+			s2 = get_next_line(fd2);
+		}
+		i++;
+	}
+	close(fd1);
+	close(fd2);
+	if (s1 == NULL && s2 == NULL)
+		printf("\e[32mTests OK\e[00m\n");
+	free(s1);
+	free(s2);
 }

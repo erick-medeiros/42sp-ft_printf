@@ -1,6 +1,7 @@
+NAME			= run_test
 INC_DIR		= ../include/
 INC_SRC		= ../src/
-NORM		= norminette $(INC_DIR)*.h $(INC_SRC)*.c
+NORM			= norminette $(INC_DIR)*.h $(INC_SRC)*.c
 
 PATH_LIB	= ../
 PATH_EXT	= ./extracted/
@@ -9,26 +10,27 @@ PATH_SRC	= ./src/
 PATH_OBJ	= ./obj/
 PATH_LOG	= ./log/
 
-LIB			= $(PATH_LIB)libftprintf.a
+LIB				= $(PATH_LIB)libftprintf.a
 
-CC			= cc
-INC_FLAG	= -I $(PATH_INC) -I $(PATH_EXT)
-CFLAGS		= -no-pie
+CC				= cc
+INC_FLAG	= -I $(PATH_INC) -I $(PATH_EXT) -g
+CFLAGS		= -no-pie -g
 
-SRC			= $(PATH_SRC)c_test.c
-SRC			+= $(PATH_SRC)utils.c
+SRC_FILES	= utils.c
+SRC_FILES	+= c_test.c
+SRC_FILES	+= pure_test.c
 
-OBJ			= $(PATH_OBJ)c_test.o
-OBJ			+= $(PATH_OBJ)utils.o
+SRC 				= $(foreach i, $(SRC_FILES), $(PATH_SRC)$(i))
+OBJ					= $(foreach i, $(SRC_FILES), $(PATH_OBJ)$(i:.c=.o))
 
-FILE_PROG	= main
+FILE_PROG		= main
 
 CREATE_DIR	= mkdir -p
-RM			= rm -fr
+RM					= rm -fr
 
 COLOR_WHITE	= \e[00m
 COLOR_GREEN	= \e[32m
-COLOR_RED	= \e[91m
+COLOR_RED		= \e[91m
 COLOR_BLUE	= \e[34m
 
 all: create_dir compile_lib compile_prog
@@ -53,10 +55,17 @@ compile_lib:
 compile_prog: $(OBJ)
 	@echo "$(COLOR_GREEN)Compiling $(COLOR_WHITE)run_test"
 	@$(CC) $(INC_FLAG) -c $(FILE_PROG).c -o ./obj/$(FILE_PROG).o
-	@$(CC) $(CFLAGS) $(PATH_EXT)*.o $(PATH_OBJ)*.o -o ./run_test
+	@$(CC) $(CFLAGS) $(PATH_EXT)*.o $(PATH_OBJ)*.o -o $(NAME)
 
 clean:
-	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)all objects and files extracted"
+	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)all objects"
+	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)files extracted"
+	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)logs"
 	@$(RM) $(PATH_OBJ)* $(PATH_EXT)*
+	@$(RM) $(PATH_LOG)*
+
+fclean: clean
+	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)$(NAME)"
+	@$(RM) $(NAME)
 
 re: clean all
