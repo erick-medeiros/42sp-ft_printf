@@ -14,6 +14,6 @@
 
 int	ft_printf(const char *format, ...)
 {
-	write(1, "oi", 2);
+	write(1, format, ft_strlen(format));
 	return (0);
 }
