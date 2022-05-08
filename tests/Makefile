@@ -1,7 +1,6 @@
 NAME			= run_test
 INC_DIR		= ../include/
 INC_SRC		= ../src/
-NORM			= norminette $(INC_DIR)*.h $(INC_SRC)*.c
 
 PATH_LIB	= ../
 PATH_EXT	= ./extracted/
@@ -36,7 +35,10 @@ COLOR_BLUE	= \e[34m
 all: create_dir compile_lib compile_prog
 
 norm:
-	@$(NORM)
+	@norminette $(INC_DIR)*.h $(INC_SRC)*.c
+
+valg:
+	@valgrind --leak-check=full --show-leak-kinds=all -s ./run_test
 
 obj/%.o: src/%.c
 	@echo "$(COLOR_GREEN)Compiling $(COLOR_WHITE)$(<:.c=)"
