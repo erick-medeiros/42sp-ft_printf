@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/08 02:05:12 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/08 16:16:48 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	main(void)
 	stdout_cp = dup(1);
 	exec_test(stdout_cp, "pure", pure_test);
 	exec_test(stdout_cp, "c", c_test);
+	exec_test(stdout_cp, "s", s_test);
 	close(stdout_cp);
 	return (0);
 }
