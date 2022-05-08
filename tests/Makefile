@@ -70,4 +70,4 @@ fclean: clean
 	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)$(NAME)"
 	@$(RM) $(NAME)
 
-re: clean all
+re: fclean all
