@@ -19,6 +19,7 @@ SRC_FILES	= utils.c
 SRC_FILES	+= pure_test.c
 SRC_FILES	+= c_test.c
 SRC_FILES	+= s_test.c
+SRC_FILES	+= pct_test.c
 
 SRC 				= $(foreach i, $(SRC_FILES), $(PATH_SRC)$(i))
 OBJ					= $(foreach i, $(SRC_FILES), $(PATH_OBJ)$(i:.c=.o))

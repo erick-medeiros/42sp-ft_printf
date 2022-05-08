@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/08 16:17:48 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/08 16:25:22 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ int	ft_vprintf(const char *format, va_list ap)
 			{
 				s = (char *)va_arg(ap, char *);
 				write(1, s, ft_strlen(s));
+				i++;
+			}
+			if (format[i] == '%')
+			{
+				c = '%';
+				write(1, &c, 1);
 				i++;
 			}
 		}
