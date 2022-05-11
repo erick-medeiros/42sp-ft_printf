@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/11 02:36:42 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/11 02:43:21 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,22 @@ int	ft_vprintf(const char *format, va_list ap)
 			{
 				d = (int)va_arg(ap, int);
 				s = ft_itoa(d);
+				write(1, s, ft_strlen(s));
+				free(s);
+				i++;
+			}
+			if (format[i] == 'x')
+			{
+				uli = (unsigned long int)va_arg(ap, unsigned long int);
+				s = ft_ulitoa_base(uli, "0123456789abcdef");
+				write(1, s, ft_strlen(s));
+				free(s);
+				i++;
+			}
+			if (format[i] == 'X')
+			{
+				uli = (unsigned long int)va_arg(ap, unsigned long int);
+				s = ft_ulitoa_base(uli, "0123456789ABCDEF");
 				write(1, s, ft_strlen(s));
 				free(s);
 				i++;

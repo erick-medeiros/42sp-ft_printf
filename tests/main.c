@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/11 02:34:57 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/11 02:44:45 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	main(void)
 	exec_test(stdout_cp, "p", p_test);
 	exec_test(stdout_cp, "d", d_test);
 	exec_test(stdout_cp, "i", i_test);
+	exec_test(stdout_cp, "x", x_test);
 	exec_test(stdout_cp, "%", pct_test);
 	close(stdout_cp);
 	return (0);
