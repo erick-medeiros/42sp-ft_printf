@@ -19,6 +19,7 @@ SRC_FILES	= utils.c
 SRC_FILES	+= pure_test.c
 SRC_FILES	+= c_test.c
 SRC_FILES	+= s_test.c
+SRC_FILES	+= p_test.c
 SRC_FILES	+= i_test.c
 SRC_FILES	+= d_test.c
 SRC_FILES	+= pct_test.c
