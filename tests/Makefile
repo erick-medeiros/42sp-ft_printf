@@ -14,6 +14,7 @@ LIB				= $(PATH_LIB)libftprintf.a
 CC				= cc
 INC_FLAG	= -I $(PATH_INC) -I $(PATH_EXT) -g
 CFLAGS		= -no-pie -g
+BON_FLAGS	= -D RUN_BONUS=1
 
 SRC_FILES	= utils.c
 SRC_FILES	+= pure_test.c
@@ -41,6 +42,8 @@ COLOR_BLUE	= \e[34m
 
 all: create_dir compile_lib compile_prog
 
+bonus: create_dir compile_lib compile_prog_bonus
+
 norm:
 	@norminette $(INC_DIR)*.h $(INC_SRC)*.c
 
@@ -65,6 +68,11 @@ compile_prog: $(OBJ)
 	@echo "$(COLOR_GREEN)Compiling $(COLOR_WHITE)run_test"
 	@$(CC) $(INC_FLAG) -c $(FILE_PROG).c -o ./obj/$(FILE_PROG).o
 	@$(CC) $(CFLAGS) $(PATH_EXT)*.o $(PATH_OBJ)*.o -o $(NAME)
+
+compile_prog_bonus: $(OBJ)
+	@echo "$(COLOR_GREEN)Compiling $(COLOR_WHITE)run_test"
+	@$(CC) $(INC_FLAG) $(BON_FLAGS) -c $(FILE_PROG).c -o ./obj/$(FILE_PROG).o
+	@$(CC) $(CFLAGS) $(BON_FLAGS) $(PATH_EXT)*.o $(PATH_OBJ)*.o -o $(NAME)
 
 clean:
 	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)all objects"

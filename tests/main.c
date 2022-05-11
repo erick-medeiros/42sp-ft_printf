@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/11 02:55:15 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/11 03:18:08 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ int	main(void)
 {
 	int	stdout_cp;
 
+	if(RUN_BONUS == 0)
+		printf("\e[34mMandatory\e[00m\n");
+	else
+		printf("\e[34mBonus\e[00m\n");
 	stdout_cp = dup(1);
 	exec_test(stdout_cp, "pure", pure_test);
 	exec_test(stdout_cp, "c", c_test);
