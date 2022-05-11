@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/11 02:43:21 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/11 02:53:05 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_vprintf(const char *format, va_list ap)
 	char	c;
 	char	*p;
 	char	*s;
+	unsigned int ui;
 	unsigned long int	uli;
 
 	i = 0;
@@ -67,6 +68,14 @@ int	ft_vprintf(const char *format, va_list ap)
 			{
 				d = (int)va_arg(ap, int);
 				s = ft_itoa(d);
+				write(1, s, ft_strlen(s));
+				free(s);
+				i++;
+			}
+			if (format[i] == 'u')
+			{
+				ui = (unsigned int)va_arg(ap, unsigned int);
+				s = ft_ulitoa_base(ui, "0123456789");
 				write(1, s, ft_strlen(s));
 				free(s);
 				i++;
