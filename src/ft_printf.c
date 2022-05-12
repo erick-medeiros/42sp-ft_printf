@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 14:52:56 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:29:03 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	ft_vprintf(const char *format, va_list ap)
 	char	*p;
 	char	*s;
 	unsigned int	ui;
+	unsigned long	ul;
 	unsigned long int	uli;
 	unsigned long long	ull;
 
@@ -105,8 +106,8 @@ int	ft_vprintf(const char *format, va_list ap)
 			}
 			if (format[i] == 'x')
 			{
-				uli = (unsigned long int)va_arg(ap, unsigned long int);
-				s = ft_ulltoa_base(uli, "0123456789abcdef");
+				ui = (unsigned int)va_arg(ap, unsigned int);
+				s = ft_uitoa_base(ui, "0123456789abcdef");
 				write(1, s, ft_strlen(s));
 				len += ft_strlen(s);
 				free(s);
@@ -114,8 +115,8 @@ int	ft_vprintf(const char *format, va_list ap)
 			}
 			if (format[i] == 'X')
 			{
-				uli = (unsigned long int)va_arg(ap, unsigned long int);
-				s = ft_ulltoa_base(uli, "0123456789ABCDEF");
+				ui = (unsigned long)va_arg(ap, unsigned long);
+				s = ft_uitoa_base(ui, "0123456789ABCDEF");
 				write(1, s, ft_strlen(s));
 				len += ft_strlen(s);
 				free(s);

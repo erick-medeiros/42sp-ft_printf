@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:08:22 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 14:34:09 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:36:13 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	d_test(int (*fn_printf)(const char *format, ...));
 void	i_test(int (*fn_printf)(const char *format, ...));
 void	u_test(int (*fn_printf)(const char *format, ...));
 void	x_test(int (*fn_printf)(const char *format, ...));
+void	upperx_test(int (*fn_printf)(const char *format, ...));
 void	pct_test(int (*fn_printf)(const char *format, ...));
 
 #endif
