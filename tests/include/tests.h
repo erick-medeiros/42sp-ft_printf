@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:08:22 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/11 03:05:53 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:34:09 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define TESTS_H
 
 # ifndef RUN_BONUS
-# define RUN_BONUS 0
+#  define RUN_BONUS 0
 # endif
 
 void	pure_test(int (*fn_printf)(const char *format, ...));

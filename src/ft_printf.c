@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 02:41:02 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:32:58 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int	ft_vprintf(const char *format, va_list ap)
 	char	c;
 	char	*p;
 	char	*s;
-	unsigned int ui;
+	unsigned int	ui;
 	unsigned long int	uli;
+	unsigned long long	ull;
 
 	i = 0;
 	len = 0;
@@ -68,12 +69,20 @@ int	ft_vprintf(const char *format, va_list ap)
 			if (format[i] == 'p')
 			{
 				p = (void *)va_arg(ap, void *);
-				uli = (unsigned long int) p;
-				s = ft_ulitoa_base(uli, "0123456789abcdef");
-				write(1, "0x", 2);
-				write(1, s, ft_strlen(s));
-				len += ft_strlen(s) + 2;
-				free(s);
+				ull = (unsigned long long) p;
+				if (ull == 0)
+				{
+					write(1, "(nil)", 5);
+					len += 5;
+				}
+				else
+				{
+					s = ft_ulitoa_base(ull, "0123456789abcdef");
+					write(1, "0x", 2);
+					write(1, s, ft_strlen(s));
+					len += ft_strlen(s) + 2;
+					free(s);
+				}
 				i++;
 			}
 			if (format[i] == 'd' || format[i] == 'i')

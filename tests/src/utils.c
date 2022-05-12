@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:08:14 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/08 01:32:41 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/12 02:50:45 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	compare_lines_two_files(char *path_open1, char *path_open2)
 		if (strcmp(s1, s2) != 0)
 		{
 			printf("\e[91mError line %zu\e[00m\n", i);
-			printf("s1 = %s", s1);
-			printf("s2 = %s", s2);
+			printf("s1 (org) = %s", s1);
+			printf("s2 (cpy) = %s", s2);
 			break ;
 		}
 		else
