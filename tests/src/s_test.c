@@ -6,27 +6,31 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:15:25 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 02:38:16 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:43:31 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	s_test(int (*fn_printf)(const char *format, ...))
+char	*s_test(int (*fn_print)(const char *format, ...))
 {
-	fn_printf("%s", "string"); fn_printf("\n");
-	fn_printf(" %s %s %s ", "-", "4", "2"); fn_printf("\n");
-	fn_printf(" NULL %s NULL ", NULL); fn_printf("\n");
+	char	*len;
+
+	len = (char *)calloc(sizeof(char), 100);
+	len[0] = fn_print("%s", "string"); fn_print("\n");
+	len[1] = fn_print(" %s %s %s ", "-", "4", "2"); fn_print("\n");
+	len[2] = fn_print(" NULL %s NULL ", NULL); fn_print("\n");
 
 	char *s2 = "Testando";
-	fn_printf("%s", "teste"); fn_printf("\n");
-	fn_printf(" %s", "oi"); fn_printf("\n");
-	fn_printf("%s ", ""); fn_printf("\n");
-	fn_printf(" %s ", ""); fn_printf("\n");
-	fn_printf(" %s ", "-"); fn_printf("\n");
-	fn_printf(" %s %s ", "", "-"); fn_printf("\n");
-	fn_printf(" %s %s ", " - ", ""); fn_printf("\n");
-	fn_printf(" %s %s %s %s %s", " - ", "", "4", "", s2); fn_printf("\n");
-	fn_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 "); fn_printf("\n");
-	fn_printf(" NULL %s NULL ", NULL); fn_printf("\n");
+	len[3] = fn_print("%s", "teste"); fn_print("\n");
+	len[4] = fn_print(" %s", "oi"); fn_print("\n");
+	len[5] = fn_print("%s ", ""); fn_print("\n");
+	len[6] = fn_print(" %s ", ""); fn_print("\n");
+	len[7] = fn_print(" %s ", "-"); fn_print("\n");
+	len[8] = fn_print(" %s %s ", "", "-"); fn_print("\n");
+	len[9] = fn_print(" %s %s ", " - ", ""); fn_print("\n");
+	len[10] = fn_print(" %s %s %s %s %s", " - ", "", "4", "", s2); fn_print("\n");
+	len[11] = fn_print(" %s %s %s %s %s ", " - ", "", "4", "", "2 "); fn_print("\n");
+	len[12] = fn_print(" NULL %s NULL ", NULL); fn_print("\n");
+	return (len);
 }

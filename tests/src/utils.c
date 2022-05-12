@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:08:14 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 02:50:45 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:30:47 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,27 @@ void	compare_lines_two_files(char *path_open1, char *path_open2)
 	close(fd1);
 	close(fd2);
 	if (s1 == NULL && s2 == NULL)
-		printf("\e[32mTests OK\e[00m\n");
+		printf("\e[32mTests lines OK\e[00m\n");
+	else
+		printf("\e[91mError line final\e[00m\n");
 	free(s1);
 	free(s2);
+}
+
+void	compare_len(char *len1, char *len2)
+{
+	size_t	i;
+	i = 0;
+	while (len1[i] != '\0' || len2[i] != '\0')
+	{
+		if (len1[i] != len2[i])
+			printf("\e[91mError len %zu\e[00m\n", i);
+		i++;
+	}
+	if (len1[i] == '\0' && len2[i] == '\0')
+		printf("\e[32mTests len OK\e[00m\n");
+	else
+		printf("\e[91mError len final\e[00m\n");
+	free(len1);
+	free(len2);
 }

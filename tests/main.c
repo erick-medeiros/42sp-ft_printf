@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 16:05:34 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:57:41 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 
 // stdout_cp = copy of default "stdout"
 
-void	exec_test(int stdout_cp, char *name_test, void (*list_tests)(int (*fn_printf)(const char *format, ...)))
+void	exec_test(int stdout_cp, char *name_test, char *(*list_tests)(int (*fn_printf)(const char *format, ...)))
 {
 	int		fd1;
 	int		fd2;
 	char	path1[100];
 	char	path2[100];
+	char	*len1;
+	char	*len2;
 
 	strcpy(path1, "log/");
 	strcat(path1, name_test);
@@ -33,14 +35,15 @@ void	exec_test(int stdout_cp, char *name_test, void (*list_tests)(int (*fn_print
 	fd1 = open_stdout(path1);
 	if (fd1 == -1)
 		return ;
-	list_tests(printf);
+	len1 = list_tests(printf);
 	stdout_default(stdout_cp, fd1);
 	fd2 = open_stdout(path2);
 	if (fd2 == -1)
 		return ;
-	list_tests(ft_printf);
+	len2 = list_tests(ft_printf);
 	stdout_default(stdout_cp, fd2);
 	compare_lines_two_files(path1, path2);
+	compare_len(len1, len2);
 }
 
 int	main(void)
