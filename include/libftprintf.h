@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/13 00:39:22 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/13 00:44:04 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void		ft_specifier_c(t_format *fmt);
 void		ft_specifier_s(t_format *fmt);
 void		ft_specifier_p(t_format *fmt);
 void		ft_specifier_d_i(t_format *fmt);
+void		ft_specifier_u(t_format *fmt);
 void		ft_specifier_x(t_format *fmt, char *base);
 void		ft_specifier_pct(t_format *fmt);
 

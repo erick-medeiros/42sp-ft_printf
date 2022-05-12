@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:29:44 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/13 00:36:17 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/13 00:43:30 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 
 void	ft_placeholder(t_format *fmt)
 {
-	unsigned long long	ull;
-	unsigned int		ui;
-	char				*s;
-	char				c;
-	int					d;
-
 	fmt->i++;
 	if (fmt->format[fmt->i] == 'c')
 		ft_specifier_c(fmt);
