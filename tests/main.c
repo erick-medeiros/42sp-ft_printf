@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 15:42:47 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:05:34 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ int	main(void)
 	else
 		printf("\e[34mBonus\e[00m\n");
 	stdout_cp = dup(1);
-	// exec_test(stdout_cp, "pure", pure_test);
-	// exec_test(stdout_cp, "c", c_test);
-	// exec_test(stdout_cp, "s", s_test);
-	// exec_test(stdout_cp, "p", p_test);
-	// exec_test(stdout_cp, "d", d_test);
-	// exec_test(stdout_cp, "i", i_test);
-	// exec_test(stdout_cp, "u", u_test);
-	// exec_test(stdout_cp, "x", x_test);
-	// exec_test(stdout_cp, "X", upperx_test);
-	// exec_test(stdout_cp, "%", pct_test);
+	exec_test(stdout_cp, "pure", pure_test);
+	exec_test(stdout_cp, "c", c_test);
+	exec_test(stdout_cp, "s", s_test);
+	exec_test(stdout_cp, "p", p_test);
+	exec_test(stdout_cp, "d", d_test);
+	exec_test(stdout_cp, "i", i_test);
+	exec_test(stdout_cp, "u", u_test);
+	exec_test(stdout_cp, "x", x_test);
+	exec_test(stdout_cp, "X", upperx_test);
+	exec_test(stdout_cp, "%", pct_test);
 	exec_test(stdout_cp, "mix", mix_test);
 	close(stdout_cp);
 	return (0);
