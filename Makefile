@@ -12,6 +12,8 @@ SRC_DIR 		= ./src/
 OBJ_DIR			= ./obj/
 
 SRC_FILES		= ft_printf.c
+SRC_FILES		+= ft_initialize.c
+SRC_FILES		+= ft_placeholder.c
 
 SRC 				= $(foreach i, $(SRC_FILES), $(SRC_DIR)$(i))
 OBJ					= $(foreach i, $(SRC_FILES), $(OBJ_DIR)$(i:.c=.o))
@@ -56,4 +58,8 @@ re:
 	@make fclean
 	@make all
 
-.PHONY: all clean fclean re
+bonus: all
+
+rebonus: fclean bonus
+
+.PHONY: all clean fclean re bonus rebonus

@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 16:00:05 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/13 00:04:47 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,115 +27,20 @@ int	ft_printf(const char *format, ...)
 
 int	ft_vprintf(const char *format, va_list ap)
 {
-	int		len;
-	int		i;
-	int		d;
-	char	c;
-	char	*p;
-	char	*s;
-	unsigned int	ui;
-	unsigned long	ul;
-	unsigned long int	uli;
-	unsigned long long	ull;
+	t_format	*fmt;
+	size_t		length;
 
-	i = 0;
-	len = 0;
-	while (format[i] != '\0')
+	fmt = ft_initialize_format(format, ap);
+	if (fmt == NULL)
+		return (0);
+	while (fmt->format[fmt->i] != '\0')
 	{
-		if (format[i] == '%')
-		{
-			i++;
-			if (format[i] == 'c')
-			{
-				c = (char)va_arg(ap, int);
-				write(1, &c, 1);
-				i++;
-				len++;
-			}
-			else if (format[i] == 's')
-			{
-				s = va_arg(ap, char *);
-				if (s == NULL)
-				{
-					write(1, "(null)", 6);
-					len += 6;
-				}
-				else
-				{
-					write(1, s, ft_strlen(s));
-					len += ft_strlen(s);
-				}
-				i++;
-			}
-			else if (format[i] == 'p')
-			{
-				p = (void *)va_arg(ap, void *);
-				ull = (unsigned long long) p;
-				if (ull == 0)
-				{
-					write(1, "(nil)", 5);
-					len += 5;
-				}
-				else
-				{
-					s = ft_ulltoa_base(ull, "0123456789abcdef");
-					write(1, "0x", 2);
-					write(1, s, ft_strlen(s));
-					len += ft_strlen(s) + 2;
-					free(s);
-				}
-				i++;
-			}
-			else if (format[i] == 'd' || format[i] == 'i')
-			{
-				d = (int)va_arg(ap, int);
-				s = ft_itoa(d);
-				write(1, s, ft_strlen(s));
-				len += ft_strlen(s);
-				free(s);
-				i++;
-			}
-			else if (format[i] == 'u')
-			{
-				ui = (unsigned int)va_arg(ap, unsigned int);
-				s = ft_ulltoa_base(ui, "0123456789");
-				write(1, s, ft_strlen(s));
-				len += ft_strlen(s);
-				free(s);
-				i++;
-			}
-			else if (format[i] == 'x')
-			{
-				ui = (unsigned int)va_arg(ap, unsigned int);
-				s = ft_uitoa_base(ui, "0123456789abcdef");
-				write(1, s, ft_strlen(s));
-				len += ft_strlen(s);
-				free(s);
-				i++;
-			}
-			else if (format[i] == 'X')
-			{
-				ui = (unsigned long)va_arg(ap, unsigned long);
-				s = ft_uitoa_base(ui, "0123456789ABCDEF");
-				write(1, s, ft_strlen(s));
-				len += ft_strlen(s);
-				free(s);
-				i++;
-			}
-			else if (format[i] == '%')
-			{
-				c = '%';
-				write(1, &c, 1);
-				len++;
-				i++;
-			}
-		}
+		if (fmt->format[fmt->i] == '%')
+			ft_placeholder(fmt);
 		else
-		{
-			write(1, &format[i], 1);
-			i++;
-			len++;
-		}
+			fmt->length += write(1, &fmt->format[fmt->i++], 1);
 	}
-	return (len);
+	length = fmt->length;
+	free(fmt);
+	return (length);
 }
