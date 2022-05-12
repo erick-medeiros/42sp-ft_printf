@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 15:29:03 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:00:05 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_vprintf(const char *format, va_list ap)
 				i++;
 				len++;
 			}
-			if (format[i] == 's')
+			else if (format[i] == 's')
 			{
 				s = va_arg(ap, char *);
 				if (s == NULL)
@@ -67,7 +67,7 @@ int	ft_vprintf(const char *format, va_list ap)
 				}
 				i++;
 			}
-			if (format[i] == 'p')
+			else if (format[i] == 'p')
 			{
 				p = (void *)va_arg(ap, void *);
 				ull = (unsigned long long) p;
@@ -86,7 +86,7 @@ int	ft_vprintf(const char *format, va_list ap)
 				}
 				i++;
 			}
-			if (format[i] == 'd' || format[i] == 'i')
+			else if (format[i] == 'd' || format[i] == 'i')
 			{
 				d = (int)va_arg(ap, int);
 				s = ft_itoa(d);
@@ -95,7 +95,7 @@ int	ft_vprintf(const char *format, va_list ap)
 				free(s);
 				i++;
 			}
-			if (format[i] == 'u')
+			else if (format[i] == 'u')
 			{
 				ui = (unsigned int)va_arg(ap, unsigned int);
 				s = ft_ulltoa_base(ui, "0123456789");
@@ -104,7 +104,7 @@ int	ft_vprintf(const char *format, va_list ap)
 				free(s);
 				i++;
 			}
-			if (format[i] == 'x')
+			else if (format[i] == 'x')
 			{
 				ui = (unsigned int)va_arg(ap, unsigned int);
 				s = ft_uitoa_base(ui, "0123456789abcdef");
@@ -113,7 +113,7 @@ int	ft_vprintf(const char *format, va_list ap)
 				free(s);
 				i++;
 			}
-			if (format[i] == 'X')
+			else if (format[i] == 'X')
 			{
 				ui = (unsigned long)va_arg(ap, unsigned long);
 				s = ft_uitoa_base(ui, "0123456789ABCDEF");
@@ -122,7 +122,7 @@ int	ft_vprintf(const char *format, va_list ap)
 				free(s);
 				i++;
 			}
-			if (format[i] == '%')
+			else if (format[i] == '%')
 			{
 				c = '%';
 				write(1, &c, 1);
@@ -132,7 +132,8 @@ int	ft_vprintf(const char *format, va_list ap)
 		}
 		else
 		{
-			write(1, &format[i++], 1);
+			write(1, &format[i], 1);
+			i++;
 			len++;
 		}
 	}

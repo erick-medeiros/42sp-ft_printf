@@ -27,6 +27,7 @@ SRC_FILES	+= u_test.c
 SRC_FILES	+= upperx_test.c
 SRC_FILES	+= x_test.c
 SRC_FILES	+= pct_test.c
+SRC_FILES	+= mix_test.c
 
 SRC 				= $(foreach i, $(SRC_FILES), $(PATH_SRC)$(i))
 OBJ					= $(foreach i, $(SRC_FILES), $(PATH_OBJ)$(i:.c=.o))
