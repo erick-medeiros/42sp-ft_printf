@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/11 02:53:05 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/12 02:41:02 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,21 @@ int	ft_vprintf(const char *format, va_list ap)
 				c = (char)va_arg(ap, int);
 				write(1, &c, 1);
 				i++;
+				len++;
 			}
 			if (format[i] == 's')
 			{
-				s = (char *)va_arg(ap, char *);
-				write(1, s, ft_strlen(s));
+				s = va_arg(ap, char *);
+				if (s == NULL)
+				{
+					write(1, "(null)", 6);
+					len += 6;
+				}
+				else
+				{
+					write(1, s, ft_strlen(s));
+					len += ft_strlen(s);
+				}
 				i++;
 			}
 			if (format[i] == 'p')
@@ -62,6 +72,8 @@ int	ft_vprintf(const char *format, va_list ap)
 				s = ft_ulitoa_base(uli, "0123456789abcdef");
 				write(1, "0x", 2);
 				write(1, s, ft_strlen(s));
+				len += ft_strlen(s) + 2;
+				free(s);
 				i++;
 			}
 			if (format[i] == 'd' || format[i] == 'i')
@@ -69,6 +81,7 @@ int	ft_vprintf(const char *format, va_list ap)
 				d = (int)va_arg(ap, int);
 				s = ft_itoa(d);
 				write(1, s, ft_strlen(s));
+				len += ft_strlen(s);
 				free(s);
 				i++;
 			}
@@ -77,6 +90,7 @@ int	ft_vprintf(const char *format, va_list ap)
 				ui = (unsigned int)va_arg(ap, unsigned int);
 				s = ft_ulitoa_base(ui, "0123456789");
 				write(1, s, ft_strlen(s));
+				len += ft_strlen(s);
 				free(s);
 				i++;
 			}
@@ -85,6 +99,7 @@ int	ft_vprintf(const char *format, va_list ap)
 				uli = (unsigned long int)va_arg(ap, unsigned long int);
 				s = ft_ulitoa_base(uli, "0123456789abcdef");
 				write(1, s, ft_strlen(s));
+				len += ft_strlen(s);
 				free(s);
 				i++;
 			}
@@ -93,6 +108,7 @@ int	ft_vprintf(const char *format, va_list ap)
 				uli = (unsigned long int)va_arg(ap, unsigned long int);
 				s = ft_ulitoa_base(uli, "0123456789ABCDEF");
 				write(1, s, ft_strlen(s));
+				len += ft_strlen(s);
 				free(s);
 				i++;
 			}
@@ -100,12 +116,15 @@ int	ft_vprintf(const char *format, va_list ap)
 			{
 				c = '%';
 				write(1, &c, 1);
+				len++;
 				i++;
 			}
 		}
 		else
+		{
 			write(1, &format[i++], 1);
-		len++;
+			len++;
+		}
 	}
 	return (len);
 }
