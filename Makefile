@@ -14,6 +14,13 @@ OBJ_DIR			= ./obj/
 SRC_FILES		= ft_printf.c
 SRC_FILES		+= ft_initialize.c
 SRC_FILES		+= ft_placeholder.c
+SRC_FILES		+= ft_specifier_c.c
+SRC_FILES		+= ft_specifier_s.c
+SRC_FILES		+= ft_specifier_p.c
+SRC_FILES		+= ft_specifier_d_i.c
+SRC_FILES		+= ft_specifier_u.c
+SRC_FILES		+= ft_specifier_x.c
+SRC_FILES		+= ft_specifier_pct.c
 
 SRC 				= $(foreach i, $(SRC_FILES), $(SRC_DIR)$(i))
 OBJ					= $(foreach i, $(SRC_FILES), $(OBJ_DIR)$(i:.c=.o))
