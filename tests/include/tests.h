@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:08:22 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 16:41:31 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/12 22:32:27 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #  define RUN_BONUS 0
 # endif
 
+//mandatory -----
 char	*pure_test(int (*fn_printf)(const char *format, ...));
 char	*c_test(int (*fn_printf)(const char *format, ...));
 char	*s_test(int (*fn_printf)(const char *format, ...));
@@ -28,5 +29,9 @@ char	*x_test(int (*fn_printf)(const char *format, ...));
 char	*upperx_test(int (*fn_printf)(const char *format, ...));
 char	*pct_test(int (*fn_printf)(const char *format, ...));
 char	*mix_test(int (*fn_printf)(const char *format, ...));
+
+//bonus -----
+//minus
+char	*minus_c_test(int (*fn_print)(const char *format, ...));
 
 #endif

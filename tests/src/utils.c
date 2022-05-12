@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:08:14 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 16:30:47 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/12 22:33:43 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int	open_stdout(char *path_open)
 	else
 		dup2(fd, 1);
 	return (fd);
+}
+
+char	*alloc_len(size_t n)
+{
+	return ((char *)calloc(sizeof(char), n));
 }
 
 void	compare_lines_two_files(char *path_open1, char *path_open2)

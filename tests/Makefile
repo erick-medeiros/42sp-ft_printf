@@ -88,3 +88,5 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
+
+rebonus: fclean bonus
