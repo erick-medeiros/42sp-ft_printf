@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:27:03 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/13 23:01:41 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 00:39:31 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	ft_specifier_d_i(t_format *fmt, t_holder *hdr)
 	len = ft_strlen(s);
 	if (hdr->subspec_width && hdr->width > len)
 	{
-		ft_sub_specifier_minus(hdr, s);
+		ft_subspec_printbuffer(hdr);
+		ft_subspec_justify(hdr, s);
 		fmt->length += write(1, hdr->width_string, hdr->width);
 		free(hdr->width_string);
 	}
