@@ -1,12 +1,12 @@
 NAME				= libftprintf.a
 CC					= cc
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror -g
 RM					= rm -fr
 LIB					= ar -rcs
 LIBFT_DIR		= ./libft/
 LIBFT				= $(LIBFT_DIR)libft.a
 INC_DIR 		= ./include/
-INC_FLAG		= -I $(INC_DIR) -I $(LIBFT_DIR)include/
+INC_FLAG		= -I $(INC_DIR) -I $(LIBFT_DIR)include/ -g
 INC					= $(INC_DIR)libftprintf.h
 SRC_DIR 		= ./src/
 OBJ_DIR			= ./obj/

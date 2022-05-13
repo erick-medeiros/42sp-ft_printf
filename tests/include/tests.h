@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:08:22 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 22:32:27 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/13 03:24:07 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ char	*mix_test(int (*fn_printf)(const char *format, ...));
 //bonus -----
 //minus
 char	*minus_c_test(int (*fn_print)(const char *format, ...));
+char	*minus_s_test(int (*fn_print)(const char *format, ...));
 
 #endif

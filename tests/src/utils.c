@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:08:14 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 22:33:43 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/13 03:25:42 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,9 @@ void	compare_lines_two_files(char *path_open1, char *path_open2)
 void	compare_len(char *len1, char *len2)
 {
 	size_t	i;
+
 	i = 0;
-	while (len1[i] != '\0' || len2[i] != '\0')
+	while (len1[i] != '\0' && len2[i] != '\0')
 	{
 		if (len1[i] != len2[i])
 			printf("\e[91mError len %zu\e[00m\n", i);
