@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:26:51 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/13 02:19:41 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/13 13:53:20 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ t_format	*ft_initialize_format(const char *format, va_list ap)
 
 t_holder	*ft_initialize_holder(void)
 {
-	t_holder	*holder;
+	t_holder	*hdr;
 
-	holder = (t_holder *)malloc(sizeof(t_holder));
-	if (holder == NULL)
+	hdr = (t_holder *)malloc(sizeof(t_holder));
+	if (hdr == NULL)
 		return (NULL);
-	holder->flag_width = '\0';
-	holder->flag_minus = '\0';
-	holder->width = 0;
-	return (holder);
+	hdr->subspec_width = 0;
+	hdr->width = 0;
+	hdr->width_string = NULL;
+	hdr->subspec_minus = 0;
+	return (hdr);
 }

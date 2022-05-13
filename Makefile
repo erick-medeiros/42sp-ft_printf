@@ -21,6 +21,7 @@ SRC_FILES		+= ft_specifier_d_i.c
 SRC_FILES		+= ft_specifier_u.c
 SRC_FILES		+= ft_specifier_x.c
 SRC_FILES		+= ft_specifier_pct.c
+SRC_FILES		+= ft_sub_specifiers.c
 
 SRC 				= $(foreach i, $(SRC_FILES), $(SRC_DIR)$(i))
 OBJ					= $(foreach i, $(SRC_FILES), $(OBJ_DIR)$(i:.c=.o))
