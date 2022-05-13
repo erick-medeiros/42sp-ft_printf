@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:29:44 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/13 23:34:34 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/13 23:42:46 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	ft_placeholder(t_format *fmt)
 	else if (fmt->format[fmt->i] == 'u')
 		ft_specifier_u(fmt, hdr);
 	else if (fmt->format[fmt->i] == 'x')
-		ft_specifier_x(fmt, "0123456789abcdef");
+		ft_specifier_x(fmt, hdr, "0123456789abcdef");
 	else if (fmt->format[fmt->i] == 'X')
-		ft_specifier_x(fmt, "0123456789ABCDEF");
+		ft_specifier_x(fmt, hdr, "0123456789ABCDEF");
 	else if (fmt->format[fmt->i] == '%')
 		ft_specifier_pct(fmt);
 	free(hdr);

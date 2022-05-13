@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:23:47 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/13 23:38:07 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/13 23:44:55 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_specifier_s(t_format *fmt, t_holder *hdr)
 {
 	char		*s;
 	char		*sjoin;
-	size_t	len;
+	size_t		len;
 
 	s = va_arg(fmt->ap, char *);
 	if (s == NULL)
