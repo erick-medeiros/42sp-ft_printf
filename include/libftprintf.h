@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/13 15:11:57 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:16:02 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,15 @@ int			ft_vprintf(const char *format, va_list ap);
 t_format	*ft_initialize_format(const char *format, va_list ap);
 t_holder	*ft_initialize_holder(void);
 void		ft_placeholder(t_format *fmt);
-void		ft_specifier_c(t_format *fmt, t_holder *holder);
-void		ft_specifier_s(t_format *fmt, t_holder *holder);
-void		ft_specifier_p(t_format *fmt);
+void		ft_specifier_c(t_format *fmt, t_holder *hdr);
+void		ft_specifier_s(t_format *fmt, t_holder *hdr);
+void		ft_specifier_p(t_format *fmt, t_holder *hdr);
 void		ft_specifier_d_i(t_format *fmt);
 void		ft_specifier_u(t_format *fmt);
 void		ft_specifier_x(t_format *fmt, char *base);
 void		ft_specifier_pct(t_format *fmt);
 
 void		ft_sub_specifiers(t_format *fmt, t_holder *hdr);
+void		ft_sub_specifier_minus(t_holder *hdr, char *str);
 
 #endif
