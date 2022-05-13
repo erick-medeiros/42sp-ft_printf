@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/13 03:24:19 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/13 23:27:03 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,28 @@ int	main(void)
 		printf("\e[34mBonus\e[00m\n");
 	stdout_cp = dup(1);
 	// mandatory
-	// exec_test(stdout_cp, "pure", pure_test);
-	// exec_test(stdout_cp, "c", c_test);
-	// exec_test(stdout_cp, "s", s_test);
-	// exec_test(stdout_cp, "p", p_test);
-	// exec_test(stdout_cp, "d", d_test);
-	// exec_test(stdout_cp, "i", i_test);
-	// exec_test(stdout_cp, "u", u_test);
-	// exec_test(stdout_cp, "x", x_test);
-	// exec_test(stdout_cp, "X", upperx_test);
-	// exec_test(stdout_cp, "%", pct_test);
-	// exec_test(stdout_cp, "mix", mix_test);
-	if (RUN_BONUS) // minus
+	exec_test(stdout_cp, "pure", pure_test);
+	exec_test(stdout_cp, "c", c_test);
+	exec_test(stdout_cp, "s", s_test);
+	exec_test(stdout_cp, "p", p_test);
+	exec_test(stdout_cp, "d", d_test);
+	exec_test(stdout_cp, "i", i_test);
+	exec_test(stdout_cp, "u", u_test);
+	exec_test(stdout_cp, "x", x_test);
+	exec_test(stdout_cp, "X", upperx_test);
+	exec_test(stdout_cp, "%", pct_test);
+	exec_test(stdout_cp, "mix", mix_test);
+	if (RUN_BONUS)
 	{
-		// ft_printf("(%-1c)\n", '0');
+		// minus
 		exec_test(stdout_cp, "minus_c", minus_c_test);
 		exec_test(stdout_cp, "minus_s", minus_s_test);
+		exec_test(stdout_cp, "minus_p", minus_p_test);
+		exec_test(stdout_cp, "minus_d", minus_d_test);
+		exec_test(stdout_cp, "minus_i", minus_i_test);
+		exec_test(stdout_cp, "minus_u", minus_u_test);
+		exec_test(stdout_cp, "minus_x", minus_x_test);
+		exec_test(stdout_cp, "minus_upperx", minus_upperx_test);
 	}
 	close(stdout_cp);
 	return (0);
