@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:18:36 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 00:38:53 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 02:27:19 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	ft_specifier_c(t_format *fmt, t_holder *hdr)
 		ft_subspec_printbuffer(hdr);
 		ft_subspec_justify(hdr, "");
 		if (hdr->subspec_minus)
-			hdr->width_string[0] = c;
+			hdr->buffer[0] = c;
 		else
-			hdr->width_string[hdr->width - 1] = c;
-		fmt->length += write(1, hdr->width_string, hdr->width);
-		free(hdr->width_string);
+			hdr->buffer[hdr->width - 1] = c;
+		fmt->length += write(1, hdr->buffer, hdr->width);
+		free(hdr->buffer);
 	}
 	else
 		fmt->length += write(1, &c, 1);

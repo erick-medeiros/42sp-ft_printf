@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:29:34 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 02:17:37 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 02:28:41 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ void	ft_sub_specifiers(t_format *fmt, t_holder *hdr)
 
 void	ft_subspec_printbuffer(t_holder *hdr)
 {
-	hdr->width_string = (char *)malloc(sizeof(char) * (hdr->width + 1));
-	if (hdr->width_string == NULL)
+	hdr->buffer = (char *)malloc(sizeof(char) * (hdr->width + 1));
+	if (hdr->buffer == NULL)
 		return ;
-	ft_memset(hdr->width_string, hdr->c_set, hdr->width);
-	hdr->width_string[hdr->width] = '\0';
+	ft_memset(hdr->buffer, hdr->c_set, hdr->width);
+	hdr->buffer[hdr->width] = '\0';
 }
 
 void	ft_subspec_justify(t_holder *hdr, char *str)
@@ -54,19 +54,19 @@ void	ft_subspec_justify(t_holder *hdr, char *str)
 
 	if (hdr->subspec_minus)
 	{
-		newstr = ft_strjoin(str, hdr->width_string);
-		ft_strlcpy(hdr->width_string, newstr, hdr->width + 1);
+		newstr = ft_strjoin(str, hdr->buffer);
+		ft_strlcpy(hdr->buffer, newstr, hdr->width + 1);
 	}
 	else
 	{
-		newstr = ft_strjoin(hdr->width_string, str);
+		newstr = ft_strjoin(hdr->buffer, str);
 		index = ft_strlen(newstr) - hdr->width;
 		if (hdr->subspec_zero && str[0] == '-')
 		{
 			newstr[index] = '-';
 			newstr[hdr->width] = hdr->c_set;
 		}
-		ft_strlcpy(hdr->width_string, &newstr[index], hdr->width + 1);
+		ft_strlcpy(hdr->buffer, &newstr[index], hdr->width + 1);
 	}
 	free(newstr);
 }

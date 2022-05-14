@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 02:17:56 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 02:36:08 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ typedef struct s_format
 
 typedef struct s_holder
 {
-	char	c_set;
 	int		subspec_width;
-	int		width;
-	char	*width_string;
 	int		subspec_minus;
 	int		subspec_zero;
+	int		width;
+	char	*buffer;
+	char	c_set;
 }	t_holder;
 
 int			ft_printf(const char *format, ...);

@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:26:51 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 00:21:17 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 02:26:23 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_holder	*ft_initialize_holder(void)
 	hdr->c_set = ' ';
 	hdr->subspec_width = 0;
 	hdr->width = 0;
-	hdr->width_string = NULL;
+	hdr->buffer = NULL;
 	hdr->subspec_minus = 0;
 	hdr->subspec_zero = 0;
 	return (hdr);
