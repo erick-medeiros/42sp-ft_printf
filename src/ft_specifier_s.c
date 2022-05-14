@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:23:47 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 02:28:23 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 04:24:00 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_specifier_s(t_format *fmt, t_holder *hdr)
 {
 	char		*s;
-	char		*sjoin;
 	size_t		len;
 
 	s = va_arg(fmt->ap, char *);
@@ -24,7 +23,14 @@ void	ft_specifier_s(t_format *fmt, t_holder *hdr)
 	else
 		s = ft_strdup(s);
 	len = ft_strlen(s);
-	if (hdr->subspec_width && hdr->width > len)
+	if (hdr->subspec_dot)
+	{
+		if (hdr->width > len)
+			fmt->length += write(1, s, len);
+		else
+			fmt->length += write(1, s, hdr->width);
+	}
+	else if (hdr->subspec_width && hdr->width > len)
 	{
 		ft_subspec_printbuffer(hdr);
 		ft_subspec_justify(hdr, s);
@@ -33,6 +39,6 @@ void	ft_specifier_s(t_format *fmt, t_holder *hdr)
 	}
 	else
 		fmt->length += write(1, s, len);
-	free(s);
 	fmt->i++;
+	free(s);
 }

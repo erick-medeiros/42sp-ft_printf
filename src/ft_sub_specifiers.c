@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:29:34 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 02:28:41 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 03:42:58 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void	ft_sub_specifiers(t_format *fmt, t_holder *hdr)
 	if (fmt->format[fmt->i] == '-')
 	{
 		hdr->subspec_minus = 1;
+		fmt->i++;
+	}
+	if (fmt->format[fmt->i] == '.')
+	{
+		hdr->subspec_dot = 1;
 		fmt->i++;
 	}
 	if (ft_isdigit(fmt->format[fmt->i]))
