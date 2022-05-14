@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:29:44 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 05:29:55 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:04:31 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void	ft_placeholder(t_format *fmt)
 {
 	t_holder	*hdr;
 
-	fmt->i++;
 	hdr = ft_initialize_holder();
+	fmt->i++;
+	ft_placeholder_subspec(fmt, hdr);
 	ft_sub_specifiers(fmt, hdr);
 	if (fmt->format[fmt->i] == 'c')
 		ft_specifier_c(fmt, hdr);
@@ -36,4 +37,33 @@ void	ft_placeholder(t_format *fmt)
 	else if (fmt->format[fmt->i] == '%')
 		ft_specifier_pct(fmt);
 	free(hdr);
+}
+
+void	ft_placeholder_subspec(t_format *fmt, t_holder *hdr)
+{
+	if (fmt->format[fmt->i] == ' ')
+	{
+		hdr->subspec_space = 1;
+		fmt->i++;
+	}
+	if (fmt->format[fmt->i] == '+')
+	{
+		hdr->subspec_plus = 1;
+		fmt->i++;
+	}
+	if (fmt->format[fmt->i] == '#')
+	{
+		hdr->subspec_sharp = 1;
+		fmt->i++;
+	}
+	if (fmt->format[fmt->i] == '-')
+	{
+		hdr->subspec_minus = 1;
+		fmt->i++;
+	}
+	if (fmt->format[fmt->i] == '.')
+	{
+		hdr->subspec_dot = 1;
+		fmt->i++;
+	}
 }

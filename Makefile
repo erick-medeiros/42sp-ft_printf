@@ -50,7 +50,7 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR)
 	@cp $(LIBFT) $(NAME)
 
-clean: $(OBJ)
+clean:
 	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)all objects"
 	@$(RM) $(OBJ)
 	@echo -n "$(COLOR_BLUE)"
@@ -62,9 +62,7 @@ fclean: clean
 	@echo -n "$(COLOR_BLUE)"
 	@make fclean -C $(LIBFT_DIR)
 
-re:
-	@make fclean
-	@make all
+re: fclean all
 
 bonus: all
 
