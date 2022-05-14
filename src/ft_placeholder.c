@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:29:44 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 23:21:50 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 23:38:11 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_placeholder_subspec(t_format *fmt, t_holder *hdr)
 		hdr->subspec_minus = 1;
 	if (hdr->subspec_minus)
 		fmt->i++;
+	ft_placeholder_subspec_width(fmt, hdr);
 	if (fmt->format[fmt->i] == '.')
 		hdr->subspec_dot = 1;
 	if (hdr->subspec_dot)
@@ -72,13 +73,22 @@ void	ft_placeholder_subspec(t_format *fmt, t_holder *hdr)
 
 void	ft_placeholder_subspec_width(t_format *fmt, t_holder *hdr)
 {
-	if (ft_isdigit(fmt->format[fmt->i]))
+	if (ft_isdigit(fmt->format[fmt->i]) && !hdr->subspec_width)
 	{
 		hdr->width = ft_atoi(&(fmt->format[fmt->i]));
 		if (hdr->width > 0)
 			hdr->subspec_width = 1;
 		if (hdr->subspec_width && fmt->format[fmt->i] == '0')
 			hdr->subspec_zero = 1;
+		while (ft_isdigit(fmt->format[fmt->i]))
+			fmt->i++;
+	}
+	else if(ft_isdigit(fmt->format[fmt->i]) && hdr->subspec_dot)
+	{
+		if (hdr->subspec_width)
+			hdr->width_dot = hdr->width;
+		hdr->width = ft_atoi(&(fmt->format[fmt->i]));
+		hdr->subspec_zero = 0;
 		while (ft_isdigit(fmt->format[fmt->i]))
 			fmt->i++;
 	}
