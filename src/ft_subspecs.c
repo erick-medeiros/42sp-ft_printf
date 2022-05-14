@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sub_specifiers.c                                :+:      :+:    :+:   */
+/*   ft_subspecs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:29:34 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 18:02:39 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 22:53:21 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ void	ft_subspec_justify(t_holder *hdr, char *str)
 	hdr->buffer = (char *)malloc(sizeof(char) * (hdr->width + 1));
 	if (hdr->buffer == NULL)
 		return ;
-	ft_memset(hdr->buffer, hdr->c_set, hdr->width);
+	if (hdr->subspec_zero)
+		ft_memset(hdr->buffer, '0', hdr->width);
+	else
+		ft_memset(hdr->buffer, ' ', hdr->width);
 	hdr->buffer[hdr->width] = '\0';
 	if (hdr->subspec_minus)
 	{
@@ -34,7 +37,10 @@ void	ft_subspec_justify(t_holder *hdr, char *str)
 		if (hdr->subspec_zero && str[0] == '-')
 		{
 			newstr[index] = '-';
-			newstr[hdr->width] = hdr->c_set;
+			if (hdr->subspec_zero)
+				newstr[hdr->width] = '0';
+			else
+				newstr[hdr->width] = ' ';
 		}
 		ft_strlcpy(hdr->buffer, &newstr[index], hdr->width + 1);
 	}
@@ -43,8 +49,8 @@ void	ft_subspec_justify(t_holder *hdr, char *str)
 
 void	ft_subspec_zero(t_holder *hdr, char *str)
 {
-	if (hdr->subspec_zero && !hdr->subspec_minus)
-		hdr->c_set = '0';
+	if (hdr->subspec_minus)
+		hdr->subspec_zero = 0;
 }
 
 int	ft_subspec_space(t_holder *hdr, char *str)

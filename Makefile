@@ -41,6 +41,7 @@ obj/%.o: src/%.c
 	@$(CC) $(INC_FLAG) -c $< -o $@
 
 $(NAME): $(OBJ) $(INC) $(LIBFT)
+	@cp $(LIBFT) $(NAME)
 	@echo "$(COLOR_GREEN)Compiling $(COLOR_WHITE)$(NAME)"
 	@$(LIB) $(NAME) $(INC) $(OBJ)
 
@@ -48,24 +49,23 @@ $(LIBFT):
 	@echo "$(COLOR_GREEN)Compiling $(COLOR_WHITE)libft"
 	@echo -n "$(COLOR_BLUE)"
 	@make -C $(LIBFT_DIR)
-	@cp $(LIBFT) $(NAME)
 
 clean:
 	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)all objects"
 	@$(RM) $(OBJ)
 	@echo -n "$(COLOR_BLUE)"
-	@make clean -C $(LIBFT_DIR)
+#@make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)$(NAME)"
 	@$(RM) $(NAME)
 	@echo -n "$(COLOR_BLUE)"
-	@make fclean -C $(LIBFT_DIR)
+#@make fclean -C $(LIBFT_DIR)
 
 re: fclean all
 
 bonus: all
 
-rebonus: fclean bonus
+rebonus: re
 
 .PHONY: all clean fclean re bonus rebonus
