@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:29:34 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 03:42:58 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 05:33:05 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void	ft_sub_specifiers(t_format *fmt, t_holder *hdr)
 	int			start;
 	char		*s;
 
+	if (fmt->format[fmt->i] == '#')
+	{
+		hdr->subspec_sharp = 1;
+		fmt->i++;
+	}
 	if (fmt->format[fmt->i] == '-')
 	{
 		hdr->subspec_minus = 1;
