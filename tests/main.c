@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 05:01:16 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 05:44:03 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ int	main(int argc, char *argv[])
 
 	if (argc > 1)
 		DEBUG_TEST = argv[1][0];
-	if(RUN_BONUS == 0)
-		printf("\e[34mMandatory\e[00m\n");
-	else
-		printf("\e[34mBonus\e[00m\n");
 	if (DEBUG_TEST)
 	{
 		return (0);
 	}
+	if(RUN_BONUS == 0)
+		printf("\e[34mMandatory\e[00m\n");
+	else
+		printf("\e[34mBonus\e[00m\n");
 	stdout_cp = dup(1);
 	// mandatory
 	exec_test(stdout_cp, "pure", pure_test);
@@ -79,6 +79,7 @@ int	main(int argc, char *argv[])
 	exec_test(stdout_cp, "upperx", upperx_test);
 	exec_test(stdout_cp, "%", pct_test);
 	exec_test(stdout_cp, "mix", mix_test);
+	exec_test(stdout_cp, "nbr", nbr_all_test);
 	if (RUN_BONUS)
 	{
 		// minus
@@ -103,6 +104,9 @@ int	main(int argc, char *argv[])
 		exec_test(stdout_cp, "dot_u", dot_u_test);
 		exec_test(stdout_cp, "dot_x", dot_x_test);
 		exec_test(stdout_cp, "dot_upperx", dot_upperx_test);
+		// #
+		exec_test(stdout_cp, "sharp_x", sharp_x_test);
+		exec_test(stdout_cp, "sharp_upperx", sharp_upperx_test);
 	}
 	close(stdout_cp);
 	return (0);

@@ -28,6 +28,8 @@ SRC_FILES	+= upperx_test.c
 SRC_FILES	+= x_test.c
 SRC_FILES	+= pct_test.c
 SRC_FILES	+= mix_test.c
+SRC_FILES	+= nbr_test.c
+SRC_FILES	+= sharp_test.c
 
 #bonus
 SRC_FILES += minus_test.c
