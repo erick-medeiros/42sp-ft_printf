@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 02:58:24 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 04:21:54 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 04:57:38 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*dot_d_test(int (*fn_print)(const char *format, ...))
 
 char	*dot_i_test(int (*fn_print)(const char *format, ...))
 {
-	char	*len = alloc_len(11);
+	char	*len = alloc_len(30);
 	len[0] = fn_print(" %.1i ", 0); fn_print("\n");
 	len[1] = fn_print(" %.2i ", -1); fn_print("\n");
 	len[2] = fn_print(" %.2i ", 1); fn_print("\n");

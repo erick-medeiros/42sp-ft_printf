@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 04:26:57 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 05:01:16 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "tests.h"
 #include "utils.h"
 
-#define DEBUG_TEST 0
+int DEBUG_TEST = 0;
 
 // stdout_cp = copy of default "stdout"
 
@@ -52,10 +52,12 @@ void	exec_test(int stdout_cp, char *name_test, char *(*list_tests)(int (*fn_prin
 	compare_len(len1, len2);
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
 	int	stdout_cp;
 
+	if (argc > 1)
+		DEBUG_TEST = argv[1][0];
 	if(RUN_BONUS == 0)
 		printf("\e[34mMandatory\e[00m\n");
 	else
