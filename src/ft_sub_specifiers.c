@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:29:34 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 17:10:24 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 17:18:44 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	ft_sub_specifiers(t_format *fmt, t_holder *hdr)
 		hdr->subspec_width = 1;
 		hdr->width = ft_atoi(s);
 		free(s);
-		if (hdr->width <= 0)
+		if (hdr->width == 0)
 			hdr->subspec_width = 0;
-		else if (hdr->subspec_width && fmt->format[start] == '0')
+		else if (fmt->format[start] == '0')
 			hdr->subspec_zero = 1;
 	}
 }
