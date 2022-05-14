@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:29:44 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 22:06:03 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 23:21:50 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,12 @@ void	ft_placeholder_continue(t_format *fmt, t_holder *hdr)
 		ft_specifier_x(fmt, hdr, "0X", "0123456789ABCDEF");
 	else if (fmt->format[fmt->i] == '%')
 		ft_specifier_pct(fmt);
-	else if(fmt->format[fmt->i] != '\0')
+	else if (fmt->format[fmt->i] != '\0')
 		ft_placeholder_continue(fmt, hdr);
 }
 
 void	ft_placeholder_subspec(t_format *fmt, t_holder *hdr)
 {
-	// ft_placeholder_subspec_width(fmt, hdr);
 	if (fmt->format[fmt->i] == ' ')
 		hdr->subspec_space = 1;
 	if (hdr->subspec_space)
@@ -73,7 +72,7 @@ void	ft_placeholder_subspec(t_format *fmt, t_holder *hdr)
 
 void	ft_placeholder_subspec_width(t_format *fmt, t_holder *hdr)
 {
-	if (ft_isdigit(fmt->format[fmt->i]))//&& !hdr->subspec_dot)
+	if (ft_isdigit(fmt->format[fmt->i]))
 	{
 		hdr->width = ft_atoi(&(fmt->format[fmt->i]));
 		if (hdr->width > 0)
@@ -83,10 +82,4 @@ void	ft_placeholder_subspec_width(t_format *fmt, t_holder *hdr)
 		while (ft_isdigit(fmt->format[fmt->i]))
 			fmt->i++;
 	}
-	// else if (ft_isdigit(fmt->format[fmt->i]) && hdr->subspec_dot)
-	// {
-	// 	hdr->dot_width = ft_atoi(&(fmt->format[fmt->i]));
-	// 	while (ft_isdigit(fmt->format[fmt->i]))
-	// 		fmt->i++;
-	// }
 }
