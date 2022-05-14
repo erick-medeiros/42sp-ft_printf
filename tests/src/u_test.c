@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 02:53:53 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 16:52:02 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 03:02:42 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 char	*u_test(int (*fn_print)(const char *format, ...))
 {
-	char	*len;
-
-	len = (char *)calloc(sizeof(char), 100);
+	char	*len = alloc_len(31);
 	len[0] = fn_print("unsigned char %u", 4294967295); fn_print("\n");
 	len[1] = fn_print(" %u ", 0); fn_print("\n");
 	len[2] = fn_print(" %u ", -1); fn_print("\n");

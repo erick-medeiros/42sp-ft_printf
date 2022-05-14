@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:34:38 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/12 16:58:10 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 03:01:24 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 char	*mix_test(int (*fn_print)(const char *format, ...))
 {
-	char	*len;
-
-	len = (char *)calloc(sizeof(char), 100);
+	char	*len = alloc_len(2);
 	len[0] = fn_print("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
 	fn_print("\n");
 	return (len);
