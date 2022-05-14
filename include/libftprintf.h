@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 18:04:27 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 22:05:58 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_holder
 	unsigned char	subspec_space;
 	unsigned char	subspec_plus;
 	unsigned int	width;
+	unsigned int	dot_width;
 	char			*buffer;
 	char			c_set;
 }	t_holder;
@@ -47,6 +48,7 @@ t_format	*ft_initialize_format(const char *format, va_list ap);
 t_holder	*ft_initialize_holder(void);
 
 void		ft_placeholder(t_format *fmt);
+void		ft_placeholder_continue(t_format *fmt, t_holder *hdr);
 void		ft_placeholder_subspec(t_format *fmt, t_holder *hdr);
 void		ft_placeholder_subspec_width(t_format *fmt, t_holder *hdr);
 

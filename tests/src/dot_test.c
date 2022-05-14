@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 02:58:24 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 04:57:38 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 22:07:10 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 char	*dot_s_test(int (*fn_print)(const char *format, ...))
 {
-	char	*len = alloc_len(11);
+	char	*len = alloc_len(15);
+	len[0] = fn_print("%.1s", NULL); fn_print("\n");
 	len[1] = fn_print("%.s", ""); fn_print("\n");
 	len[2] = fn_print(" %.1s", ""); fn_print("\n");
 	len[3] = fn_print("%.1s ", ""); fn_print("\n");
@@ -24,6 +25,8 @@ char	*dot_s_test(int (*fn_print)(const char *format, ...))
 	len[7] = fn_print(" %.3s %.2s ", " - ", ""); fn_print("\n");
 	len[8] = fn_print(" %.1s %.2s %.3s %.4s ", " - ", "", "4", ""); fn_print("\n");
 	len[9] = fn_print(" %.2s %.3s %.4s %.5s %.1s ", " - ", "", "4", "", "2 "); fn_print("\n");
+	// len[10] = fn_print("%.6s", NULL); fn_print("\n");
+	// len[11] = fn_print("(%1.s)", "21-school.ru"); fn_print("\n");
 	return (len);
 }
 
