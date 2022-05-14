@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 05:45:19 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 06:56:25 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_holder
 	int		subspec_zero;
 	int		subspec_dot;
 	int		subspec_sharp;
+	int		subspec_space;
 	int		width;
 	char	*buffer;
 	char	c_set;
@@ -55,5 +56,6 @@ void		ft_sub_specifiers(t_format *fmt, t_holder *hdr);
 void		ft_subspec_printbuffer(t_holder *hdr);
 void		ft_subspec_justify(t_holder *hdr, char *str);
 void		ft_subspec_zero(t_holder *hdr, char *str);
+int			ft_subspec_space(t_holder *hdr, char *str);
 
 #endif
