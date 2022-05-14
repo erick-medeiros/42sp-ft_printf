@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 05:44:03 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 07:05:22 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ int	main(int argc, char *argv[])
 	exec_test(stdout_cp, "upperx", upperx_test);
 	exec_test(stdout_cp, "%", pct_test);
 	exec_test(stdout_cp, "mix", mix_test);
-	exec_test(stdout_cp, "nbr", nbr_all_test);
 	if (RUN_BONUS)
 	{
+		exec_test(stdout_cp, "nbr", nbr_all_test);
 		// minus
 		exec_test(stdout_cp, "minus_c", minus_c_test);
 		exec_test(stdout_cp, "minus_s", minus_s_test);
@@ -107,6 +107,13 @@ int	main(int argc, char *argv[])
 		// #
 		exec_test(stdout_cp, "sharp_x", sharp_x_test);
 		exec_test(stdout_cp, "sharp_upperx", sharp_upperx_test);
+		// ' '
+		exec_test(stdout_cp, "space_s", space_s_test);
+		exec_test(stdout_cp, "space_d", space_d_test);
+		exec_test(stdout_cp, "space_i", space_i_test);
+		// +
+		exec_test(stdout_cp, "plus_d", plus_d_test);
+		exec_test(stdout_cp, "plus_i", plus_i_test);
 	}
 	close(stdout_cp);
 	return (0);
