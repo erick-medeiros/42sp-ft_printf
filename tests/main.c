@@ -6,13 +6,15 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/13 23:27:03 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 02:19:04 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include "tests.h"
 #include "utils.h"
+
+#define DEBUG_TEST 0
 
 // stdout_cp = copy of default "stdout"
 
@@ -58,6 +60,10 @@ int	main(void)
 		printf("\e[34mMandatory\e[00m\n");
 	else
 		printf("\e[34mBonus\e[00m\n");
+	if (DEBUG_TEST)
+	{
+		return (0);
+	}
 	stdout_cp = dup(1);
 	// mandatory
 	exec_test(stdout_cp, "pure", pure_test);
@@ -68,7 +74,7 @@ int	main(void)
 	exec_test(stdout_cp, "i", i_test);
 	exec_test(stdout_cp, "u", u_test);
 	exec_test(stdout_cp, "x", x_test);
-	exec_test(stdout_cp, "X", upperx_test);
+	exec_test(stdout_cp, "upperx", upperx_test);
 	exec_test(stdout_cp, "%", pct_test);
 	exec_test(stdout_cp, "mix", mix_test);
 	if (RUN_BONUS)
@@ -82,6 +88,12 @@ int	main(void)
 		exec_test(stdout_cp, "minus_u", minus_u_test);
 		exec_test(stdout_cp, "minus_x", minus_x_test);
 		exec_test(stdout_cp, "minus_upperx", minus_upperx_test);
+		// zero
+		exec_test(stdout_cp, "zero_d", zero_d_test);
+		exec_test(stdout_cp, "zero_i", zero_i_test);
+		exec_test(stdout_cp, "zero_u", zero_u_test);
+		exec_test(stdout_cp, "zero_x", zero_x_test);
+		exec_test(stdout_cp, "zero_upperx", zero_upperx_test);
 	}
 	close(stdout_cp);
 	return (0);

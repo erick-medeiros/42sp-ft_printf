@@ -30,8 +30,8 @@ SRC_FILES	+= pct_test.c
 SRC_FILES	+= mix_test.c
 
 #bonus
-
 SRC_FILES += minus_test.c
+SRC_FILES += 0_test.c
 
 SRC 				= $(foreach i, $(SRC_FILES), $(PATH_SRC)$(i))
 OBJ					= $(foreach i, $(SRC_FILES), $(PATH_OBJ)$(i:.c=.o))
