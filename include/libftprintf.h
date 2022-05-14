@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 06:56:25 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 07:11:48 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_holder
 	int		subspec_dot;
 	int		subspec_sharp;
 	int		subspec_space;
+	int		subspec_plus;
 	int		width;
 	char	*buffer;
 	char	c_set;
