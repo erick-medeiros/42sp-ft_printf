@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 02:19:04 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 04:26:57 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,13 @@ int	main(void)
 		exec_test(stdout_cp, "zero_u", zero_u_test);
 		exec_test(stdout_cp, "zero_x", zero_x_test);
 		exec_test(stdout_cp, "zero_upperx", zero_upperx_test);
+		// .
+		exec_test(stdout_cp, "dot_s", dot_s_test);
+		exec_test(stdout_cp, "dot_d", dot_d_test);
+		exec_test(stdout_cp, "dot_i", dot_i_test);
+		exec_test(stdout_cp, "dot_u", dot_u_test);
+		exec_test(stdout_cp, "dot_x", dot_x_test);
+		exec_test(stdout_cp, "dot_upperx", dot_upperx_test);
 	}
 	close(stdout_cp);
 	return (0);

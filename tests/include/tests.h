@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:08:22 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 00:03:39 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 03:09:07 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,12 @@ char	*zero_i_test(int (*fn_print)(const char *format, ...));
 char	*zero_u_test(int (*fn_print)(const char *format, ...));
 char	*zero_x_test(int (*fn_print)(const char *format, ...));
 char	*zero_upperx_test(int (*fn_print)(const char *format, ...));
+// .
+char	*dot_s_test(int (*fn_print)(const char *format, ...));
+char	*dot_d_test(int (*fn_print)(const char *format, ...));
+char	*dot_i_test(int (*fn_print)(const char *format, ...));
+char	*dot_u_test(int (*fn_print)(const char *format, ...));
+char	*dot_x_test(int (*fn_print)(const char *format, ...));
+char	*dot_upperx_test(int (*fn_print)(const char *format, ...));
 
 #endif
