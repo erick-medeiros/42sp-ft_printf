@@ -6,32 +6,11 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:29:34 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 17:18:44 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:02:39 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-void	ft_sub_specifiers(t_format *fmt, t_holder *hdr)
-{
-	int			start;
-	char		*s;
-
-	if (ft_isdigit(fmt->format[fmt->i]))
-	{
-		start = fmt->i;
-		while (ft_isdigit(fmt->format[fmt->i]))
-			fmt->i++;
-		s = ft_substr(&(fmt->format[start]), 0, fmt->i - start + 1);
-		hdr->subspec_width = 1;
-		hdr->width = ft_atoi(s);
-		free(s);
-		if (hdr->width == 0)
-			hdr->subspec_width = 0;
-		else if (fmt->format[start] == '0')
-			hdr->subspec_zero = 1;
-	}
-}
 
 void	ft_subspec_justify(t_holder *hdr, char *str)
 {
