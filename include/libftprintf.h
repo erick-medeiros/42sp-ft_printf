@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 21:06:43 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:24:57 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ typedef struct s_holder
 	unsigned char	flag_numbersign;
 	unsigned char	flag_zero;
 	unsigned char	subspec_width;
-	unsigned char	subspec_dot_width;
-	unsigned char	subspec_width_dot;
-	unsigned char	subspec_dot;
 	unsigned int	width;
-	unsigned int	width_dot;
+	unsigned char	subspec_dot;
+	unsigned char	subspec_precision;
+	unsigned int	precision;
 	char			*buffer;
+	unsigned char	subspec_width_dot;
 }	t_holder;
 
 int			ft_printf(const char *format, ...);

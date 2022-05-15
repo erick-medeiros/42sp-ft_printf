@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:26:51 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 21:07:03 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:33:12 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ t_holder	*ft_initialize_holder(void)
 	hdr->flag_numbersign = 0;
 	hdr->flag_zero = 0;
 	hdr->subspec_width = 0;
-	hdr->subspec_dot_width = 0;
-	hdr->subspec_width_dot = 0;
-	hdr->subspec_dot = 0;
 	hdr->width = 0;
-	hdr->width_dot = 0;
+	hdr->subspec_dot = 0;
+	hdr->subspec_precision = 0;
+	hdr->precision = 0;
 	hdr->buffer = NULL;
 	return (hdr);
 }

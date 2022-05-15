@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:23:47 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 02:38:14 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:32:26 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	ft_specifier_s(t_format *fmt, t_holder *hdr)
 	{
 		if (sn != NULL)
 		{
-			if (hdr->subspec_width && !hdr->subspec_dot_width)
+			if (hdr->subspec_width && !hdr->subspec_precision)
 			{
-				hdr->width = hdr->width_dot;
+				hdr->width = hdr->precision;
 				ft_strupd(&s, ft_substr(s, 0, hdr->width));
 				ft_subspec_buffer(hdr);
 			}
-			else if (hdr->subspec_width && !hdr->subspec_width_dot)
+			else if (!hdr->subspec_width && hdr->subspec_precision)
 			{
 				ft_strupd(&s, ft_substr(s, 0, hdr->width));
 				hdr->width = ft_strlen(s);
@@ -44,7 +44,7 @@ void	ft_specifier_s(t_format *fmt, t_holder *hdr)
 			else
 			{
 				ft_strupd(&s, ft_substr(s, 0, hdr->width));
-				hdr->width = hdr->width_dot;
+				hdr->width = hdr->precision;
 				ft_subspec_buffer(hdr);
 				ft_subspec_justify(hdr, s);
 			}
