@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:23:47 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 02:02:56 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:38:14 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,23 @@ void	ft_specifier_s(t_format *fmt, t_holder *hdr)
 				hdr->width = hdr->width_dot;
 				ft_strupd(&s, ft_substr(s, 0, hdr->width));
 				ft_subspec_buffer(hdr);
-				fmt->length += write(1, hdr->buffer, hdr->width);
-				free(hdr->buffer);
 			}
 			else if (hdr->subspec_width && !hdr->subspec_width_dot)
 			{
 				ft_strupd(&s, ft_substr(s, 0, hdr->width));
+				hdr->width = ft_strlen(s);
 				ft_subspec_buffer(hdr);
 				ft_subspec_justify(hdr, s);
-				fmt->length += write(1, hdr->buffer, hdr->width);
-				free(hdr->buffer);
 			}
-			else {
-				if (hdr->width < len)
-					len = hdr->width;
-				fmt->length += write(1, s, len);
+			else
+			{
+				ft_strupd(&s, ft_substr(s, 0, hdr->width));
+				hdr->width = hdr->width_dot;
+				ft_subspec_buffer(hdr);
+				ft_subspec_justify(hdr, s);
 			}
+			fmt->length += write(1, hdr->buffer, hdr->width);
+			free(hdr->buffer);
 		}
 		else if (sn == NULL && hdr->width >= len)
 			fmt->length += write(1, s, len);

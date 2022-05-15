@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 02:58:24 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 01:01:46 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:32:36 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	*dot_s_test(int (*fn_print)(const char *format, ...))
 	len[9] = fn_print(" %.2s %.3s %.4s %.5s %.1s ", " - ", "", "4", "", "2 "); fn_print("\n");
 	len[10] = fn_print("%.6s", NULL); fn_print("\n");
 	len[11] = fn_print("(%1.s)", "21-school.ru"); fn_print("\n");
+	len[12] = fn_print("(%10.1s)", "21-school.ru"); fn_print("\n");
 	return (len);
 }
 
