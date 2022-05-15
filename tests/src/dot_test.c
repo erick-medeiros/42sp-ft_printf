@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 02:58:24 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 02:32:36 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:55:52 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*dot_s_test(int (*fn_print)(const char *format, ...))
 
 char	*dot_d_test(int (*fn_print)(const char *format, ...))
 {
-	char	*len = alloc_len(30);
+	char	*len = alloc_len(32);
 	len[0] = fn_print(" %.1d ", 0); fn_print("\n");
 	len[1] = fn_print(" %.2d ", -1); fn_print("\n");
 	len[2] = fn_print(" %.2d ", 1); fn_print("\n");
@@ -63,6 +63,7 @@ char	*dot_d_test(int (*fn_print)(const char *format, ...))
 	len[26] = fn_print(" %.13d ", ULONG_MAX); fn_print("\n");
 	len[27] = fn_print(" %.14d ", 9223372036854775807LL); fn_print("\n");
 	len[28] = fn_print(" %.8d %.9d %.10d %.11d %.12d %.13d %.14d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42); fn_print("\n");
+	len[29] = fn_print("(%.0d)", 0); fn_print("\n");
 	return (len);
 }
 
