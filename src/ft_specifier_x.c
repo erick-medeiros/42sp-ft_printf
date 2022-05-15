@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:33:05 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 00:03:48 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:06:27 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	ft_specifier_x(t_format *fmt, t_holder *hdr, char *prefix, char *base)
 
 	ui = (unsigned int)va_arg(fmt->ap, unsigned int);
 	s = ft_uitoa_base(ui, base);
-	if (hdr->subspec_sharp && ui > 0)
+	if (hdr->flag_numbersign && ui > 0)
 		ft_strupd(&s, ft_strjoin(prefix, s));
 	len = ft_strlen(s);
 	if (hdr->subspec_dot)
-		hdr->subspec_zero = 1;
+		hdr->flag_zero = 1;
 	if (hdr->subspec_width && hdr->width > len)
 	{
 		ft_subspec_zero(hdr, s);

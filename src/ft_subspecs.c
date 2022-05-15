@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:29:34 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 00:05:51 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:06:27 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_subspec_buffer(t_holder *hdr)
 	hdr->buffer = (char *)malloc(sizeof(char) * (hdr->width + 1));
 	if (!hdr->buffer)
 		return ;
-	if (hdr->subspec_zero)
+	if (hdr->flag_zero)
 		ft_memset(hdr->buffer, '0', hdr->width);
 	else
 		ft_memset(hdr->buffer, ' ', hdr->width);
@@ -29,7 +29,7 @@ void	ft_subspec_justify(t_holder *hdr, char *str)
 	char	*newstr;
 	size_t	index;
 
-	if (hdr->subspec_minus)
+	if (hdr->flag_minus)
 	{
 		newstr = ft_strjoin(str, hdr->buffer);
 		ft_strlcpy(hdr->buffer, newstr, hdr->width + 1);
@@ -38,10 +38,10 @@ void	ft_subspec_justify(t_holder *hdr, char *str)
 	{
 		newstr = ft_strjoin(hdr->buffer, str);
 		index = ft_strlen(newstr) - hdr->width;
-		if (hdr->subspec_zero && str[0] == '-')
+		if (hdr->flag_zero && str[0] == '-')
 		{
 			newstr[index] = '-';
-			if (hdr->subspec_zero)
+			if (hdr->flag_zero)
 				newstr[hdr->width] = '0';
 			else
 				newstr[hdr->width] = ' ';
@@ -53,8 +53,8 @@ void	ft_subspec_justify(t_holder *hdr, char *str)
 
 void	ft_subspec_zero(t_holder *hdr, char *str)
 {
-	if (hdr->subspec_minus)
-		hdr->subspec_zero = 0;
+	if (hdr->flag_minus)
+		hdr->flag_zero = 0;
 }
 
 int	ft_subspec_space(t_holder *hdr, char *str)
@@ -62,7 +62,7 @@ int	ft_subspec_space(t_holder *hdr, char *str)
 	char	c;
 
 	c = ' ';
-	if (hdr->subspec_space)
+	if (hdr->flag_space)
 		if (!ft_strchr(str, '-') && !ft_strchr(str, '+'))
 			return (write(1, &c, 1));
 	return (0);
@@ -72,7 +72,7 @@ void	ft_subspec_dot(t_holder *hdr, char c)
 {
 	if (hdr->subspec_dot)
 	{
-		hdr->subspec_zero = 1;
+		hdr->flag_zero = 1;
 		if (c == '-')
 			hdr->width++;
 	}

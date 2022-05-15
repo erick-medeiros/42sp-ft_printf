@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:29:44 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 02:20:56 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:06:27 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,20 @@ void	ft_placeholder_continue(t_format *fmt, t_holder *hdr)
 void	ft_placeholder_subspec(t_format *fmt, t_holder *hdr)
 {
 	if (fmt->format[fmt->i] == ' ')
-		hdr->subspec_space = 1;
-	if (hdr->subspec_space)
+		hdr->flag_space = 1;
+	if (hdr->flag_space)
 		fmt->i++;
 	if (fmt->format[fmt->i] == '+')
-		hdr->subspec_plus = 1;
-	if (hdr->subspec_plus)
+		hdr->flag_plus = 1;
+	if (hdr->flag_plus)
 		fmt->i++;
 	if (fmt->format[fmt->i] == '#')
-		hdr->subspec_sharp = 1;
-	if (hdr->subspec_sharp)
+		hdr->flag_numbersign = 1;
+	if (hdr->flag_numbersign)
 		fmt->i++;
 	if (fmt->format[fmt->i] == '-')
-		hdr->subspec_minus = 1;
-	if (hdr->subspec_minus)
+		hdr->flag_minus = 1;
+	if (hdr->flag_minus)
 		fmt->i++;
 	ft_placeholder_subspec_width(fmt, hdr);
 	if (fmt->format[fmt->i] == '.')
@@ -79,7 +79,7 @@ void	ft_placeholder_subspec_width(t_format *fmt, t_holder *hdr)
 		if (hdr->width > 0)
 			hdr->subspec_width = 1;
 		if (hdr->subspec_width && fmt->format[fmt->i] == '0')
-			hdr->subspec_zero = 1;
+			hdr->flag_zero = 1;
 		while (ft_isdigit(fmt->format[fmt->i]))
 			fmt->i++;
 	}
@@ -94,7 +94,7 @@ void	ft_placeholder_subspec_width(t_format *fmt, t_holder *hdr)
 		hdr->subspec_dot_width = 1;
 		hdr->subspec_width = 1;
 		hdr->width = ft_atoi(&(fmt->format[fmt->i]));
-		hdr->subspec_zero = 0;
+		hdr->flag_zero = 0;
 		while (ft_isdigit(fmt->format[fmt->i]))
 			fmt->i++;
 	}
