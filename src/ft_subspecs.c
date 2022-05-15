@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:29:34 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 23:31:20 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/15 23:43:49 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,6 @@ void	ft_subspec_justify(t_holder *hdr, char *str)
 		ft_strlcpy(hdr->buffer, &newstr[index], hdr->width + 1);
 	}
 	free(newstr);
-}
-
-int	ft_subspec_space(t_holder *hdr, char *str)
-{
-	char	c;
-
-	c = ' ';
-	if (hdr->flag_space)
-		if (!ft_strchr(str, '-') && !ft_strchr(str, '+'))
-			return (write(1, &c, 1));
-	return (0);
 }
 
 void	ft_subspec_dot(t_holder *hdr, char c)
