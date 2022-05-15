@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 00:05:04 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/15 01:28:36 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_format
 typedef struct s_holder
 {
 	unsigned char	subspec_width;
+	unsigned char	subspec_dot_width;
+	unsigned char	subspec_width_dot;
 	unsigned char	subspec_minus;
 	unsigned char	subspec_zero;
 	unsigned char	subspec_dot;

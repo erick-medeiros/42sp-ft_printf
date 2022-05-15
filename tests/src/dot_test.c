@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 02:58:24 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 23:45:21 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/15 01:01:46 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*dot_s_test(int (*fn_print)(const char *format, ...))
 	char	*len = alloc_len(15);
 	len[0] = fn_print("%.1s", NULL); fn_print("\n");
 	len[1] = fn_print("%.s", ""); fn_print("\n");
-	len[2] = fn_print(" %.1s", ""); fn_print("\n");
+	len[2] = fn_print("( %.1s)", ""); fn_print("\n");
 	len[3] = fn_print("%.1s ", ""); fn_print("\n");
 	len[4] = fn_print(" %.s ", ""); fn_print("\n");
 	len[5] = fn_print(" %.s ", "-"); fn_print("\n");
