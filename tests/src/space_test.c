@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 05:55:45 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 06:30:45 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 01:19:51 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char	*space_d_test(int (*fn_print)(const char *format, ...))
 	len[i++] = fn_print(" % d ", ULONG_MAX); fn_print("\n");
 	len[i++] = fn_print(" % d ", 9223372036854775807LL); fn_print("\n");
 	len[i++] = fn_print(" % d % d % d % d % d % d % d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42); fn_print("\n");
+	len[i++] = fn_print("%    d", 0); fn_print("\n");
 	return (len);
 }
 

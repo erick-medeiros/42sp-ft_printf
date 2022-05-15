@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 06:02:10 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 06:05:35 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 01:22:18 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ char	*plus_d_test(int (*fn_print)(const char *format, ...))
 	len[i++] = fn_print(" %+d ", ULONG_MAX); fn_print("\n");
 	len[i++] = fn_print(" %+d ", 9223372036854775807LL); fn_print("\n");
 	len[i++] = fn_print(" %+d %+d %+d %+d %+d %+d %+d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42); fn_print("\n");
+	len[i++] = fn_print("%+++d", 2147483647); fn_print("\n");
 	return (len);
 }
 
