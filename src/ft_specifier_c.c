@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:18:36 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 21:00:51 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/15 23:53:06 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ft_specifier_c(t_format *fmt, t_holder *hdr)
 		else
 			hdr->buffer[hdr->width - 1] = c;
 		fmt->length += write(1, hdr->buffer, hdr->width);
-		free(hdr->buffer);
 	}
 	else
 		fmt->length += write(1, &c, 1);
