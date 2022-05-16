@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:29:44 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 14:53:22 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:48:16 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	ft_placeholder(t_format *fmt)
 	else if (fmt->format[fmt->i] == 'd' || fmt->format[fmt->i] == 'i')
 		ft_specifier_d_i(fmt, hdr);
 	else if (fmt->format[fmt->i] == 'u')
-		ft_specifier_u(fmt, hdr);
+		ft_specifier_ui(fmt, hdr, "", "0123456789");
 	else if (fmt->format[fmt->i] == 'o')
-		ft_specifier_x(fmt, hdr, "0", "01234567");
+		ft_specifier_ui(fmt, hdr, "0", "01234567");
 	else if (fmt->format[fmt->i] == 'x')
-		ft_specifier_x(fmt, hdr, "0x", "0123456789abcdef");
+		ft_specifier_ui(fmt, hdr, "0x", "0123456789abcdef");
 	else if (fmt->format[fmt->i] == 'X')
-		ft_specifier_x(fmt, hdr, "0X", "0123456789ABCDEF");
+		ft_specifier_ui(fmt, hdr, "0X", "0123456789ABCDEF");
 	else if (fmt->format[fmt->i] == '%')
 		ft_specifier_pct(fmt);
 	free(hdr);

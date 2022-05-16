@@ -18,13 +18,12 @@ SRC_FILES		+= ft_specifier_c.c
 SRC_FILES		+= ft_specifier_s.c
 SRC_FILES		+= ft_specifier_p.c
 SRC_FILES		+= ft_specifier_d_i.c
-SRC_FILES		+= ft_specifier_u.c
-SRC_FILES		+= ft_specifier_x.c
+SRC_FILES		+= ft_specifier_ui.c
 SRC_FILES		+= ft_specifier_pct.c
 SRC_FILES		+= ft_subspecs.c
 
-SRC 				= $(foreach i, $(SRC_FILES), $(SRC_DIR)$(i))
-OBJ					= $(foreach i, $(SRC_FILES), $(OBJ_DIR)$(i:.c=.o))
+SRC					= $(addprefix $(SRC_DIR), $(SRC_FILES))
+OBJ					= $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 
 COLOR_WHITE	= \e[00m
 COLOR_GREEN	= \e[32m

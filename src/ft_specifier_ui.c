@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_specifier_x.c                                   :+:      :+:    :+:   */
+/*   ft_specifier_ui.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:33:05 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 15:44:30 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:47:32 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_specifier_x(t_format *fmt, t_holder *hdr, char *prefix, char *base)
+void	ft_specifier_ui(t_format *fmt, t_holder *hdr, char *prefix, char *base)
 {
 	unsigned int	ui;
 	char			*s;
