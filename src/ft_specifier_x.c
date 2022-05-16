@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:33:05 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 02:57:30 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 04:06:42 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ void	ft_specifier_x(t_format *fmt, t_holder *hdr, char *prefix, char *base)
 {
 	unsigned int	ui;
 	char			*s;
-	size_t			len;
 
 	ui = (unsigned int)va_arg(fmt->ap, unsigned int);
 	s = ft_uitoa_base(ui, base);
 	if (hdr->flag_numbersign && ui > 0)
 		ft_strupd(&s, ft_strjoin(prefix, s));
-	if (hdr->subspec_precision)
+	if (hdr->subspec_precision && hdr->precision == 0 && ui == 0)
+		ft_strupd(&s, ft_strdup(""));
+	else if (hdr->subspec_precision)
 		ft_subspec_minimum_number(&s, '0', hdr->precision);
-	len = ft_strlen(s);
 	if (hdr->subspec_dot)
 		hdr->flag_zero = 1;
-	if (hdr->subspec_width && hdr->width > len)
+	if (hdr->subspec_width && hdr->width > ft_strlen(s))
 	{
 		if (hdr->flag_minus)
 			hdr->flag_zero = 0;
@@ -36,7 +36,7 @@ void	ft_specifier_x(t_format *fmt, t_holder *hdr, char *prefix, char *base)
 		fmt->length += write(1, hdr->buffer, hdr->width);
 	}
 	else
-		fmt->length += write(1, s, len);
+		fmt->length += write(1, s, ft_strlen(s));
 	fmt->i++;
 	free(s);
 }

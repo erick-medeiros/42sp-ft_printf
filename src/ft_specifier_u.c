@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:31:18 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 02:57:27 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 04:02:49 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	ft_specifier_u(t_format *fmt, t_holder *hdr)
 
 	ui = (unsigned int)va_arg(fmt->ap, unsigned int);
 	s = ft_ulltoa_base(ui, "0123456789");
-	if (hdr->subspec_precision)
+	if (hdr->subspec_precision && hdr->precision == 0 && ui == 0)
+		ft_strupd(&s, ft_strdup(""));
+	else if (hdr->subspec_precision)
 		ft_subspec_minimum_number(&s, '0', hdr->precision);
 	len = ft_strlen(s);
 	if (hdr->subspec_width && hdr->width > len)
