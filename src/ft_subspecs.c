@@ -6,13 +6,13 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:29:34 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 03:53:36 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 05:31:31 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_subspec_buffer(t_holder *hdr)
+static void	ft_subspec_buffer(t_holder *hdr)
 {
 	hdr->buffer = (char *)malloc(sizeof(char) * (hdr->width + 1));
 	if (!hdr->buffer)
@@ -29,6 +29,7 @@ void	ft_subspec_justify(t_holder *hdr, char *str)
 	char	*newstr;
 	size_t	index;
 
+	ft_subspec_buffer(hdr);
 	if (hdr->flag_minus)
 	{
 		newstr = ft_strjoin(str, hdr->buffer);
