@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:29:34 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 02:57:33 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 03:35:53 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_subspec_minimum_number(char **str, char c, size_t size)
 	char	*newstr;
 	size_t	len;
 
-	if (size == 0)
+	if (size == 0 && ft_atoi(*str) == 0)
 		return (ft_strupd(str, ft_strdup("")));
 	if (*str[0] == '-')
 		size++;
