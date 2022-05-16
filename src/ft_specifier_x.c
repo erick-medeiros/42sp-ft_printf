@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:33:05 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 14:52:46 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:44:30 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,21 @@ void	ft_specifier_x(t_format *fmt, t_holder *hdr, char *prefix, char *base)
 {
 	unsigned int	ui;
 	char			*s;
-	size_t			len;
 
 	ui = (unsigned int)va_arg(fmt->ap, unsigned int);
 	s = ft_uitoa_base(ui, base);
+	if (hdr->flag_minus)
+		hdr->flag_zero = 0;
 	if (hdr->flag_numbersign && ui > 0)
 		ft_strupd(&s, ft_strjoin(prefix, s));
 	if (hdr->subspec_precision && hdr->precision == 0 && ui == 0)
 		ft_strupd(&s, ft_strdup(""));
 	else if (hdr->subspec_precision)
 		ft_subspec_minimum_number(&s, '0', hdr->precision);
-	if (hdr->subspec_width && hdr->width > ft_strlen(s))
-	{
-		if (hdr->flag_minus)
-			hdr->flag_zero = 0;
+	hdr->length = ft_strlen(s);
+	if (hdr->subspec_width && hdr->width > hdr->length)
 		ft_subspec_justify(&s, hdr);
-		len = hdr->width;
-	}
-	else
-		len = ft_strlen(s);
-	fmt->length += write(1, s, len);
+	fmt->length += write(1, s, hdr->length);
 	fmt->i++;
 	free(s);
 }

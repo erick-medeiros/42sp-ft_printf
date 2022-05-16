@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:26:51 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 14:53:02 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:28:35 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ t_holder	*ft_initialize_holder(void)
 	hdr->width = 0;
 	hdr->subspec_precision = 0;
 	hdr->precision = 0;
+	hdr->length = 0;
 	return (hdr);
 }

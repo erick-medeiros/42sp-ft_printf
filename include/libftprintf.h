@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 14:53:14 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:31:15 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_holder
 	unsigned int	width;
 	unsigned char	subspec_precision;
 	unsigned int	precision;
+	size_t			length;
 }	t_holder;
 
 int			ft_printf(const char *format, ...);

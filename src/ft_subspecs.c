@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:29:34 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 15:21:39 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:36:17 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_subspec_justify(char **str, t_holder *hdr)
 	}
 	free(newstr);
 	ft_strupd(str, buffer);
+	hdr->length = hdr->width;
 }
 
 void	ft_subspec_minimum_number(char **str, char c, size_t size)
