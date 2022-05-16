@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 05:55:45 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 01:19:51 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 02:17:24 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*space_s_test(int (*fn_print)(const char *format, ...))
 
 char	*space_d_test(int (*fn_print)(const char *format, ...))
 {
-	char	*len = alloc_len(30);
+	char	*len = alloc_len(35);
 	int		i = 0;
 	len[i++] = fn_print(" % d ", 0); fn_print("\n");
 	len[i++] = fn_print(" (% 2d) ", -1); fn_print("\n");
