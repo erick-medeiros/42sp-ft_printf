@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/14 07:05:22 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 05:15:01 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ int	main(int argc, char *argv[])
 		// +
 		exec_test(stdout_cp, "plus_d", plus_d_test);
 		exec_test(stdout_cp, "plus_i", plus_i_test);
+		//submix
+		exec_test(stdout_cp, "submix", submix_test);
 	}
 	close(stdout_cp);
 	return (0);

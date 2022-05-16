@@ -37,6 +37,7 @@ SRC_FILES += dot_test.c
 SRC_FILES	+= sharp_test.c
 SRC_FILES	+= space_test.c
 SRC_FILES	+= plus_test.c
+SRC_FILES	+= submix_test.c
 
 SRC 				= $(foreach i, $(SRC_FILES), $(PATH_SRC)$(i))
 OBJ					= $(foreach i, $(SRC_FILES), $(PATH_OBJ)$(i:.c=.o))
