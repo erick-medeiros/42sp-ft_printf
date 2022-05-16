@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:33:05 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 04:06:42 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 05:21:10 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	ft_specifier_x(t_format *fmt, t_holder *hdr, char *prefix, char *base)
 		ft_strupd(&s, ft_strdup(""));
 	else if (hdr->subspec_precision)
 		ft_subspec_minimum_number(&s, '0', hdr->precision);
-	if (hdr->subspec_dot)
-		hdr->flag_zero = 1;
 	if (hdr->subspec_width && hdr->width > ft_strlen(s))
 	{
 		if (hdr->flag_minus)

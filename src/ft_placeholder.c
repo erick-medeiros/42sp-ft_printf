@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:29:44 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 05:07:17 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 05:22:52 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,11 @@ void	ft_placeholder_subspec(t_format *fmt, t_holder *hdr)
 		ft_placeholder_subspec_width(fmt, hdr);
 	if (fmt->format[fmt->i] == '.')
 	{
-		hdr->subspec_dot = 1;
 		hdr->subspec_precision = 1;
 		hdr->flag_zero = 0;
 	}
-	fmt->i += hdr->subspec_dot;
-	if (ft_isdigit(fmt->format[fmt->i]) && hdr->subspec_dot)
+	fmt->i += hdr->subspec_precision;
+	if (ft_isdigit(fmt->format[fmt->i]) && hdr->subspec_precision)
 		ft_placeholder_subspec_precision(fmt, hdr);
 }
 
