@@ -6,50 +6,60 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:29:34 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 05:31:31 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:21:39 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static void	ft_subspec_buffer(t_holder *hdr)
+static char	*ft_subspec_buffer(t_holder *hdr)
 {
-	hdr->buffer = (char *)malloc(sizeof(char) * (hdr->width + 1));
-	if (!hdr->buffer)
-		return ;
+	char	*buffer;
+
+	buffer = (char *)malloc(sizeof(char) * (hdr->width + 1));
+	if (!buffer)
+		return (NULL);
 	if (hdr->flag_zero)
-		ft_memset(hdr->buffer, '0', hdr->width);
+		ft_memset(buffer, '0', hdr->width);
 	else
-		ft_memset(hdr->buffer, ' ', hdr->width);
-	hdr->buffer[hdr->width] = '\0';
+		ft_memset(buffer, ' ', hdr->width);
+	buffer[hdr->width] = '\0';
+	return (buffer);
 }
 
-void	ft_subspec_justify(t_holder *hdr, char *str)
+static void	ft_subspec_move_minus_sign(char **str, size_t	i, t_holder *hdr)
+{
+	(*str)[i] = '-';
+	if (hdr->flag_zero)
+		(*str)[hdr->width] = '0';
+	else
+		(*str)[hdr->width] = ' ';
+}
+
+void	ft_subspec_justify(char **str, t_holder *hdr)
 {
 	char	*newstr;
+	char	*buffer;
 	size_t	index;
 
-	ft_subspec_buffer(hdr);
+	buffer = ft_subspec_buffer(hdr);
+	if (!buffer)
+		return ;
 	if (hdr->flag_minus)
 	{
-		newstr = ft_strjoin(str, hdr->buffer);
-		ft_strlcpy(hdr->buffer, newstr, hdr->width + 1);
+		newstr = ft_strjoin(*str, buffer);
+		ft_strlcpy(buffer, newstr, hdr->width + 1);
 	}
 	else
 	{
-		newstr = ft_strjoin(hdr->buffer, str);
+		newstr = ft_strjoin(buffer, *str);
 		index = ft_strlen(newstr) - hdr->width;
-		if (hdr->flag_zero && str[0] == '-')
-		{
-			newstr[index] = '-';
-			if (hdr->flag_zero)
-				newstr[hdr->width] = '0';
-			else
-				newstr[hdr->width] = ' ';
-		}
-		ft_strlcpy(hdr->buffer, &newstr[index], hdr->width + 1);
+		if (hdr->flag_zero && *str[0] == '-')
+			ft_subspec_move_minus_sign(&newstr, index, hdr);
+		ft_strlcpy(buffer, &newstr[index], hdr->width + 1);
 	}
 	free(newstr);
+	ft_strupd(str, buffer);
 }
 
 void	ft_subspec_minimum_number(char **str, char c, size_t size)

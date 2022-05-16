@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 05:31:39 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:53:14 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_holder
 	unsigned int	width;
 	unsigned char	subspec_precision;
 	unsigned int	precision;
-	char			*buffer;
 }	t_holder;
 
 int			ft_printf(const char *format, ...);
@@ -59,7 +58,7 @@ void		ft_specifier_u(t_format *fmt, t_holder *hdr);
 void		ft_specifier_x(t_format *fmt, t_holder *hdr, char *pre, char *base);
 void		ft_specifier_pct(t_format *fmt);
 
-void		ft_subspec_justify(t_holder *hdr, char *str);
+void		ft_subspec_justify(char **str, t_holder *hdr);
 void		ft_subspec_minimum_number(char **str, char c, size_t size);
 
 #endif
