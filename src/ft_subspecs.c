@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:29:34 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 23:43:49 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 02:57:33 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,29 @@ void	ft_subspec_justify(t_holder *hdr, char *str)
 	free(newstr);
 }
 
-void	ft_subspec_dot(t_holder *hdr, char c)
+void	ft_subspec_minimum_number(char **str, char c, size_t size)
 {
-	if (hdr->subspec_dot)
+	char	*newstr;
+	size_t	len;
+
+	if (size == 0)
+		return (ft_strupd(str, ft_strdup("")));
+	if (*str[0] == '-')
+		size++;
+	len = ft_strlen(*str);
+	if (len >= size)
+		return ;
+	size = size - len;
+	newstr = (char *)malloc(sizeof(char) * (size + 1));
+	if (!newstr)
+		return ;
+	ft_memset(newstr, c, size);
+	newstr[size] = '\0';
+	if (*str[0] == '-')
 	{
-		hdr->flag_zero = 1;
-		if (c == '-')
-			hdr->width++;
+		newstr[0] = '-';
+		*str[0] = c;
 	}
+	ft_strupd(str, ft_strjoin(newstr, *str));
+	free(newstr);
 }

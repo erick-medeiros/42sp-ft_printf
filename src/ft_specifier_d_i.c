@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:27:03 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 23:53:24 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 02:57:25 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	ft_specifier_d_i(t_format *fmt, t_holder *hdr)
 	s = ft_itoa(d);
 	if (hdr->flag_plus && ft_isdigit(s[0]))
 		ft_strupd(&s, ft_strjoin("+", s));
-	ft_subspec_dot(hdr, s[0]);
+	if (hdr->subspec_precision)
+		ft_subspec_minimum_number(&s, '0', hdr->precision);
 	len = ft_strlen(s);
 	if (hdr->subspec_width && hdr->width > len)
 	{

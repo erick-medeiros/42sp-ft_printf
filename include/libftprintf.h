@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:55:16 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/15 23:43:54 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 02:57:21 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ void		ft_specifier_pct(t_format *fmt);
 
 void		ft_subspec_buffer(t_holder *hdr);
 void		ft_subspec_justify(t_holder *hdr, char *str);
-void		ft_subspec_dot(t_holder *hdr, char c);
+void		ft_subspec_minimum_number(char **str, char c, size_t size);
 
 #endif
