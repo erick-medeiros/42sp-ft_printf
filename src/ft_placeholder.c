@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:29:44 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 02:49:48 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/16 04:51:31 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,18 @@ void	ft_placeholder(t_format *fmt)
 
 void	ft_placeholder_subspec(t_format *fmt, t_holder *hdr)
 {
-	if (fmt->format[fmt->i] == ' ')
-		hdr->flag_space = 1;
-	while (fmt->format[fmt->i] == ' ')
+	while (ft_strchr(" +#-", fmt->format[fmt->i]))
+	{
+		if (fmt->format[fmt->i] == ' ')
+			hdr->flag_space = 1;
+		else if (fmt->format[fmt->i] == '+')
+			hdr->flag_plus = 1;
+		else if (fmt->format[fmt->i] == '#')
+			hdr->flag_numbersign = 1;
+		else if (fmt->format[fmt->i] == '-')
+			hdr->flag_minus = 1;
 		fmt->i++;
-	if (fmt->format[fmt->i] == '+')
-		hdr->flag_plus = 1;
-	while (fmt->format[fmt->i] == '+')
-		fmt->i++;
-	if (fmt->format[fmt->i] == '#')
-		hdr->flag_numbersign = 1;
-	fmt->i += hdr->flag_numbersign;
-	if (fmt->format[fmt->i] == '-')
-		hdr->flag_minus = 1;
-	fmt->i += hdr->flag_minus;
+	}
 	if (ft_isdigit(fmt->format[fmt->i]))
 		ft_placeholder_subspec_width(fmt, hdr);
 	if (fmt->format[fmt->i] == '.')
