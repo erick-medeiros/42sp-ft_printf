@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 00:25:20 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 15:40:03 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/18 00:58:02 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ void	ft_specifier_p(t_format *fmt, t_holder *hdr)
 	if (ull == 0)
 		s = ft_strdup("(nil)");
 	else
+	{
 		s = ft_ulltoa_base(ull, "0123456789abcdef");
-	hdr->length = ft_strlen(s);
-	if (!hdr->subspec_width || !hdr->flag_zero || hdr->width < hdr->length + 2)
-		if (ull > 0)
-			ft_strupd(&s, ft_strjoin("0x", s));
+		ft_strupd(&s, ft_strjoin("0x", s));
+	}
 	hdr->length = ft_strlen(s);
 	if (hdr->subspec_width && hdr->width > hdr->length)
 	{
+		if (hdr->flag_zero && ull > 0)
+			s[1] = '0';
 		ft_subspec_justify(&s, hdr);
-		if (hdr->flag_zero)
+		if (hdr->flag_zero && ull > 0)
 			s[1] = 'x';
 	}
 	fmt->length += write(1, s, hdr->length);
