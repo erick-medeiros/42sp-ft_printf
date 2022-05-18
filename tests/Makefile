@@ -40,8 +40,8 @@ SRC_FILES	+= plus_test.c
 SRC_FILES	+= submix_test.c
 SRC_FILES	+= extra_test.c
 
-SRC 				= $(foreach i, $(SRC_FILES), $(PATH_SRC)$(i))
-OBJ					= $(foreach i, $(SRC_FILES), $(PATH_OBJ)$(i:.c=.o))
+SRC					= $(addprefix $(PATH_SRC), $(SRC_FILES))
+OBJ					= $(addprefix $(PATH_OBJ), $(SRC_FILES:.c=.o))
 
 FILE_PROG		= main
 
