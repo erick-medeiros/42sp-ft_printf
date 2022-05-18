@@ -11,10 +11,13 @@ PATH_LOG	= ./log/
 
 LIB				= $(PATH_LIB)libftprintf.a
 
+MKDIR			= mkdir -p
+RM				= rm -fr
 CC				= cc
 INC_FLAG	= -I $(PATH_INC) -I $(PATH_EXT) -g
 CFLAGS		= -no-pie -g
-BON_FLAGS	= -D RUN_BONUS=1
+
+FILE_PROG	= main
 
 SRC_FILES	= utils.c
 SRC_FILES	+= pure_test.c
@@ -40,13 +43,8 @@ SRC_FILES	+= plus_test.c
 SRC_FILES	+= submix_test.c
 SRC_FILES	+= extra_test.c
 
-SRC					= $(addprefix $(PATH_SRC), $(SRC_FILES))
-OBJ					= $(addprefix $(PATH_OBJ), $(SRC_FILES:.c=.o))
-
-FILE_PROG		= main
-
-CREATE_DIR	= mkdir -p
-RM					= rm -fr
+SRC				= $(addprefix $(PATH_SRC), $(SRC_FILES))
+OBJ				= $(addprefix $(PATH_OBJ), $(SRC_FILES:.c=.o))
 
 COLOR_WHITE	= \e[00m
 COLOR_GREEN	= \e[32m
@@ -54,8 +52,6 @@ COLOR_RED		= \e[91m
 COLOR_BLUE	= \e[34m
 
 all: create_dir compile_lib compile_prog
-
-bonus: create_dir compile_lib compile_prog_bonus
 
 norm:
 	@norminette $(INC_DIR)*.h $(INC_SRC)*.c
@@ -68,7 +64,7 @@ obj/%.o: src/%.c
 	@$(CC) $(INC_FLAG) -c $< -o $@
 
 create_dir:
-	@$(CREATE_DIR) $(PATH_EXT) $(PATH_OBJ) $(PATH_LOG)
+	@$(MKDIR) $(PATH_EXT) $(PATH_OBJ) $(PATH_LOG)
 
 compile_lib:
 	@echo -n "$(COLOR_BLUE)"
@@ -82,22 +78,14 @@ compile_prog: $(OBJ)
 	@$(CC) $(INC_FLAG) -c $(FILE_PROG).c -o ./obj/$(FILE_PROG).o
 	@$(CC) $(CFLAGS) $(PATH_EXT)*.o $(PATH_OBJ)*.o -o $(NAME)
 
-compile_prog_bonus: $(OBJ)
-	@echo "$(COLOR_GREEN)Compiling $(COLOR_WHITE)run_test"
-	@$(CC) $(INC_FLAG) $(BON_FLAGS) -c $(FILE_PROG).c -o ./obj/$(FILE_PROG).o
-	@$(CC) $(CFLAGS) $(BON_FLAGS) $(PATH_EXT)*.o $(PATH_OBJ)*.o -o $(NAME)
-
 clean:
 	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)all objects"
 	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)files extracted"
 	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)logs"
-	@$(RM) $(PATH_OBJ)* $(PATH_EXT)*
-	@$(RM) $(PATH_LOG)*
+	@$(RM) $(PATH_OBJ)* $(PATH_EXT)* $(PATH_LOG)*
 
 fclean: clean
 	@echo "$(COLOR_RED)Removing $(COLOR_WHITE)$(NAME)"
 	@$(RM) $(NAME)
 
 re: fclean all
-
-rebonus: fclean bonus
