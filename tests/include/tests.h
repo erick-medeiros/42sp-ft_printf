@@ -6,16 +6,12 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:08:22 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 07:25:51 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:57:50 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TESTS_H
 # define TESTS_H
-
-# ifndef RUN_BONUS
-#  define RUN_BONUS 1
-# endif
 
 //mandatory -----
 char	*pure_test(int (*fn_printf)(const char *format, ...));

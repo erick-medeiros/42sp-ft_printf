@@ -6,7 +6,7 @@
 /*   By: eandre-f <eandre-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:50 by eandre-f          #+#    #+#             */
-/*   Updated: 2022/05/16 07:30:39 by eandre-f         ###   ########.fr       */
+/*   Updated: 2022/05/18 22:01:16 by eandre-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "tests.h"
 #include "utils.h"
 
-int DEBUG_TEST = 0;
+unsigned char RUN_TEST = 'm';
 
 // stdout_cp = copy of default "stdout"
 
@@ -34,6 +34,8 @@ void	exec_test(int stdout_cp, char *name_test, char *(*list_tests)(int (*fn_prin
 	strcpy(path2, "log/");
 	strcat(path2, name_test);
 	strcat(path2, "_ft_printf.log");
+	remove(path1);
+	remove(path2);
 	printf("\e[33mTesting (%s)\e[00m\n", name_test);
 	// printf
 	fd1 = open_stdout(path1);
@@ -57,29 +59,38 @@ int	main(int argc, char *argv[])
 	int	stdout_cp;
 
 	if (argc > 1)
-		DEBUG_TEST = argv[1][0];
-	if (DEBUG_TEST)
+		RUN_TEST = argv[1][0];
+	if (RUN_TEST == 'd')
 	{
+		printf("\e[34mDebug\e[00m\n");
+		// add specific tests to debug here
 		return (0);
 	}
-	if(RUN_BONUS == 0)
+	if(RUN_TEST == 'a')
+		printf("\e[34mMandatory and Bonus\e[00m\n");
+	else if(RUN_TEST == 'm')
 		printf("\e[34mMandatory\e[00m\n");
-	else
+	else if(RUN_TEST == 'b')
 		printf("\e[34mBonus\e[00m\n");
+	else if(RUN_TEST == 'e')
+		printf("\e[34mExtra\e[00m\n");
 	stdout_cp = dup(1);
 	// mandatory
-	exec_test(stdout_cp, "pure", pure_test);
-	exec_test(stdout_cp, "c", c_test);
-	exec_test(stdout_cp, "s", s_test);
-	exec_test(stdout_cp, "p", p_test);
-	exec_test(stdout_cp, "d", d_test);
-	exec_test(stdout_cp, "i", i_test);
-	exec_test(stdout_cp, "u", u_test);
-	exec_test(stdout_cp, "x", x_test);
-	exec_test(stdout_cp, "upperx", upperx_test);
-	exec_test(stdout_cp, "%", pct_test);
-	exec_test(stdout_cp, "mix", mix_test);
-	if (RUN_BONUS)
+	if (RUN_TEST == 'a' || RUN_TEST == 'm')
+	{
+		exec_test(stdout_cp, "pure", pure_test);
+		exec_test(stdout_cp, "c", c_test);
+		exec_test(stdout_cp, "s", s_test);
+		exec_test(stdout_cp, "p", p_test);
+		exec_test(stdout_cp, "d", d_test);
+		exec_test(stdout_cp, "i", i_test);
+		exec_test(stdout_cp, "u", u_test);
+		exec_test(stdout_cp, "x", x_test);
+		exec_test(stdout_cp, "upperx", upperx_test);
+		exec_test(stdout_cp, "%", pct_test);
+		exec_test(stdout_cp, "mix", mix_test);
+	}
+	if (RUN_TEST == 'a' || RUN_TEST == 'b')
 	{
 		exec_test(stdout_cp, "nbr", nbr_all_test);
 		// minus
@@ -116,9 +127,10 @@ int	main(int argc, char *argv[])
 		exec_test(stdout_cp, "plus_i", plus_i_test);
 		// submix
 		exec_test(stdout_cp, "submix", submix_test);
-		// extra
-		exec_test(stdout_cp, "extra", extra_test);
 	}
+	// extra
+	if (RUN_TEST == 'e')
+		exec_test(stdout_cp, "extra", extra_test);
 	close(stdout_cp);
 	return (0);
 }
