@@ -1,6 +1,10 @@
 # ft_printf
 The goal of this project is pretty straightforward. You will recode printf(). You will mainly learn about using a variable number of arguments.
 
+## Final Score
+
+<img height=150px src=https://github.com/erick-medeiros/guide42/blob/main/grade/grade_125_100.png alt="eandre-f score"/>
+
 ### Mandatory
 
 * Your function has to handle the following conversions: `cspdiuxX%`
