@@ -37,7 +37,7 @@ $(OBJ_DIR):
 
 obj/%.o: src/%.c
 	@echo "$(COLOR_GREEN)Compiling $(COLOR_WHITE)$(<:.c=)"
-	@$(CC) $(INC_FLAG) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INC_FLAG) -c $< -o $@
 
 $(NAME): $(OBJ) $(INC) $(LIBFT)
 	@cp $(LIBFT) $(NAME)
